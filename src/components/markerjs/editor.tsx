@@ -138,6 +138,7 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
   const editor = useRef<MarkerArea | null>(null);
 
   const [editorState, setEditorState] = useState<EditorState>({
+    mode: "select",
     canUndo: false,
     canRedo: false,
     canDelete: false,
@@ -147,12 +148,24 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
     useState<MarkerTypeItem | null>(null);
 
   const handleToolbarAction = (action: ToolbarAction) => {
-    console.log(action);
+    switch (action) {
+      case "select": {
+        setEditorState((prevState) => ({
+          ...prevState,
+          mode: "select",
+        }));
+        break;
+      }
+    }
   };
 
   const handleNewMarker = (markerType: MarkerTypeItem | null) => {
     setCurrentMarkerType(markerType);
     if (editor.current && markerType) {
+      setEditorState((prevState) => ({
+        ...prevState,
+        mode: "create",
+      }));
       editor.current.createMarker(markerType.markerType);
     }
   };
@@ -168,12 +181,15 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
       editor.current.targetWidth = 800;
 
       editor.current.addEventListener("areastatechange", () => {
-        if (editor.current)
-          setEditorState({
-            canUndo: editor.current.isUndoPossible,
-            canRedo: editor.current.isRedoPossible,
-            canDelete: editor.current.currentMarkerEditor !== undefined, // @todo: handle multiple markers
-          });
+        if (editor.current) {
+          const editorInstance = editor.current;
+          setEditorState((prevState) => ({
+            ...prevState,
+            canUndo: editorInstance.isUndoPossible,
+            canRedo: editorInstance.isRedoPossible,
+            canDelete: editorInstance.currentMarkerEditor !== undefined, // @todo: handle multiple markers
+          }));
+        }
       });
 
       editor.current.addEventListener("markerselect", (e) => {
@@ -182,6 +198,13 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
       });
       editor.current.addEventListener("markerdeselect", () => {
         // setCurrentMarker(null);
+      });
+
+      editor.current.addEventListener("markercreate", () => {
+        setEditorState((prevState) => ({
+          ...prevState,
+          mode: "select",
+        }));
       });
 
       editorContainer.current.appendChild(editor.current);

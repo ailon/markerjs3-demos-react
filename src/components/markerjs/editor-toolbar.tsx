@@ -34,6 +34,8 @@ const EditorToolbar = ({
         <ToolbarActionButton
           icon={PointerIcon}
           title="Select"
+          buttonType="toggle"
+          toggled={editorState.mode === "select"}
           action="select"
           onAction={onAction}
         />
@@ -55,7 +57,7 @@ const EditorToolbar = ({
                 key={markerListItem.name}
                 markers={markerListItem}
                 toggled={
-                  currentMarkerType
+                  editorState.mode === "create" && currentMarkerType
                     ? markerListItem.markerTypes.includes(currentMarkerType)
                     : false
                 }
