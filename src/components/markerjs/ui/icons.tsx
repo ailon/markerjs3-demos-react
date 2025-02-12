@@ -30,5 +30,18 @@ import EllipseFrameIcon from "@/assets/icons/markers/oval-vertical.svg?react";
 import EllipseIcon from "@/assets/icons/markers/oval-vertical-filled.svg?react";
 import HighlightIcon from "@/assets/icons/markers/highlight.svg?react";
 
+import ArrowIcon from "@/assets/icons/markers/arrow-narrow-right.svg?react";
+import LineIcon from "@/assets/icons/markers/line.svg?react";
+import MeasurementIcon from "@/assets/icons/markers/ruler-measure.svg?react";
+
 // marker icons
-export { FrameIcon, CoverIcon, EllipseFrameIcon, EllipseIcon, HighlightIcon };
+export {
+  FrameIcon,
+  CoverIcon,
+  EllipseFrameIcon,
+  EllipseIcon,
+  HighlightIcon,
+  ArrowIcon,
+  LineIcon,
+  MeasurementIcon,
+};

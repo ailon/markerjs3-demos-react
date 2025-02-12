@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import {
   AnnotationState,
+  ArrowMarker,
   CoverMarker,
   EllipseFrameMarker,
   EllipseMarker,
   FrameMarker,
   HighlightMarker,
+  LineMarker,
   MarkerArea,
+  MeasurementMarker,
 } from "@markerjs/markerjs3";
 import EditorToolbar from "./editor-toolbar";
 import EditorToolbox from "./editor-toolbox";
@@ -17,11 +20,14 @@ import {
 } from "@/models/toolbar";
 import { EditorState } from "@/models/editor";
 import {
+  ArrowIcon,
   CoverIcon,
   EllipseFrameIcon,
   EllipseIcon,
   FrameIcon,
   HighlightIcon,
+  LineIcon,
+  MeasurementIcon,
 } from "./ui/icons";
 
 const markerTypes: MarkerTypeList = [
@@ -52,6 +58,26 @@ const markerTypes: MarkerTypeList = [
         icon: EllipseIcon,
         name: "Ellipse (filled)",
         markerType: EllipseMarker,
+      },
+    ],
+  },
+  {
+    name: "Lines",
+    markerTypes: [
+      {
+        icon: ArrowIcon,
+        name: "Arrow",
+        markerType: ArrowMarker,
+      },
+      {
+        icon: LineIcon,
+        name: "Line",
+        markerType: LineMarker,
+      },
+      {
+        icon: MeasurementIcon,
+        name: "Measure",
+        markerType: MeasurementMarker,
       },
     ],
   },
