@@ -6,15 +6,16 @@ import {
 } from "@/models/toolbar";
 import { DeleteIcon, DownloadIcon, PointerIcon } from "./ui/icons";
 import ToolbarActionButton from "./ui/toolbar-action-button";
-import { EditorState } from "@/models/editor";
+import { EditorState, NewMarkerOptions } from "@/models/editor";
 import ToolbarMarkerGroup from "./ui/toolbar-marker-group";
+import CustomImagePicker from "./ui/toolbar-custom-image-picker";
 
 type Props = {
   markerTypes: MarkerTypeList;
   currentMarkerType: MarkerTypeItem | null;
   editorState: EditorState;
   onAction: (action: ToolbarAction) => void;
-  onNewMarker: (markerType: MarkerTypeItem) => void;
+  onNewMarker: (markerType: MarkerTypeItem, options?: NewMarkerOptions) => void;
 } & React.ComponentProps<"div">;
 
 const EditorToolbar = ({
@@ -66,6 +67,13 @@ const EditorToolbar = ({
             );
           }
         })}
+        <CustomImagePicker
+          toggled={
+            editorState.mode === "create" &&
+            currentMarkerType?.markerType.typeName === "CustomImageMarker"
+          }
+          onSelectionChange={onNewMarker}
+        />
       </div>
 
       <div className="inline-flex space-x-1">

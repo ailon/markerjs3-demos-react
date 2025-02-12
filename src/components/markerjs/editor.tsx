@@ -5,6 +5,7 @@ import {
   CalloutMarker,
   CaptionFrameMarker,
   CoverMarker,
+  CustomImageMarker,
   EllipseFrameMarker,
   EllipseMarker,
   FrameMarker,
@@ -23,7 +24,7 @@ import {
   MarkerTypeList,
   ToolbarAction,
 } from "@/models/toolbar";
-import { EditorState } from "@/models/editor";
+import { EditorState, NewMarkerOptions } from "@/models/editor";
 import {
   ArrowIcon,
   CalloutIcon,
@@ -190,14 +191,24 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
     }
   };
 
-  const handleNewMarker = (markerType: MarkerTypeItem | null) => {
+  const handleNewMarker = (
+    markerType: MarkerTypeItem | null,
+    options?: NewMarkerOptions
+  ) => {
     setCurrentMarkerType(markerType);
     if (editor.current && markerType) {
       setEditorState((prevState) => ({
         ...prevState,
         mode: "create",
       }));
-      editor.current.createMarker(markerType.markerType);
+      const markerEditor = editor.current.createMarker(markerType.markerType);
+      if (
+        markerEditor &&
+        markerEditor.marker instanceof CustomImageMarker &&
+        options?.svgString
+      ) {
+        markerEditor.marker.svgString = options.svgString;
+      }
     }
   };
 
@@ -235,7 +246,6 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
 
       editor.current.addEventListener("markerdeselect", () => {
         updateCalculatedEditorState();
-        setCurrentMarkerType(null);
       });
 
       editor.current.addEventListener("markercreate", () => {
