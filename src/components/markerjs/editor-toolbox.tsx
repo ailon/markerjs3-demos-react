@@ -7,12 +7,14 @@ import {
   ZoomResetIcon,
 } from "./ui/icons";
 import ToolbarActionButton from "./ui/toolbar-action-button";
+import { EditorState } from "@/models/editor";
 
 type Props = {
+  editorState: EditorState;
   onAction: (action: ToolbarAction) => void;
 } & React.ComponentProps<"div">;
 
-const EditorToolbox = ({ onAction, ...props }: Props) => {
+const EditorToolbox = ({ editorState, onAction, ...props }: Props) => {
   return (
     <div
       className="flex space-x-1 p-2 justify-between border-t border-slate-100"
@@ -24,12 +26,14 @@ const EditorToolbox = ({ onAction, ...props }: Props) => {
           title="Undo"
           action="undo"
           onAction={onAction}
+          disabled={!editorState.canUndo}
         />
         <ToolbarActionButton
           icon={RedoIcon}
           title="Redo"
           action="redo"
           onAction={onAction}
+          disabled={!editorState.canRedo}
         />
       </div>
       <div className="inline-flex space-x-1">properties</div>

@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnnotationState, MarkerArea } from "@markerjs/markerjs3";
 import EditorToolbar from "./editor-toolbar";
 import EditorToolbox from "./editor-toolbox";
 import { ToolbarAction } from "@/models/toolbar";
+import { EditorState } from "@/models/editor";
 
 type Props = {
   targetImageSrc: string;
@@ -12,6 +13,12 @@ type Props = {
 const Editor = ({ targetImageSrc, annotation }: Props) => {
   const editorContainer = useRef<HTMLDivElement | null>(null);
   const editor = useRef<MarkerArea | null>(null);
+
+  const [editorState, setEditorState] = useState<EditorState>({
+    canUndo: false,
+    canRedo: false,
+    canDelete: false,
+  });
 
   const onToolbarAction = (action: ToolbarAction) => {
     console.log(action);
@@ -26,6 +33,15 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
 
       editor.current.targetImage = targetImg;
       editor.current.targetWidth = 800;
+
+      editor.current.addEventListener("areastatechange", () => {
+        if (editor.current)
+          setEditorState({
+            canUndo: editor.current.isUndoPossible,
+            canRedo: editor.current.isRedoPossible,
+            canDelete: editor.current.currentMarkerEditor !== undefined, // @todo: handle multiple markers
+          });
+      });
 
       editor.current.addEventListener("markerselect", (e) => {
         const markerEditor = e.detail.markerEditor;
@@ -45,14 +61,14 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] w-full h-full">
       <div>
-        <EditorToolbar onAction={onToolbarAction} />
+        <EditorToolbar editorState={editorState} onAction={onToolbarAction} />
       </div>
       <div
         ref={editorContainer}
         className="flex overflow-hidden bg-slate-50"
       ></div>
       <div>
-        <EditorToolbox onAction={onToolbarAction} />
+        <EditorToolbox editorState={editorState} onAction={onToolbarAction} />
       </div>
     </div>
   );
