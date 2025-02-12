@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import {
   AnnotationState,
+  CoverMarker,
+  EllipseFrameMarker,
   EllipseMarker,
   FrameMarker,
+  HighlightMarker,
   MarkerArea,
 } from "@markerjs/markerjs3";
 import EditorToolbar from "./editor-toolbar";
@@ -13,20 +16,41 @@ import {
   ToolbarAction,
 } from "@/models/toolbar";
 import { EditorState } from "@/models/editor";
-import { EllipseIcon, RectangleIcon } from "./ui/icons";
+import {
+  CoverIcon,
+  EllipseFrameIcon,
+  EllipseIcon,
+  FrameIcon,
+  HighlightIcon,
+} from "./ui/icons";
 
 const markerTypes: MarkerTypeList = [
   {
     name: "Basic shapes",
     markerTypes: [
       {
-        icon: RectangleIcon,
+        icon: FrameIcon,
         name: "Rectangle",
         markerType: FrameMarker,
       },
       {
-        icon: EllipseIcon,
+        icon: CoverIcon,
+        name: "Cover (filled rectangle)",
+        markerType: CoverMarker,
+      },
+      {
+        icon: HighlightIcon,
+        name: "Highlighter",
+        markerType: HighlightMarker,
+      },
+      {
+        icon: EllipseFrameIcon,
         name: "Ellipse",
+        markerType: EllipseFrameMarker,
+      },
+      {
+        icon: EllipseIcon,
+        name: "Ellipse (filled)",
         markerType: EllipseMarker,
       },
     ],

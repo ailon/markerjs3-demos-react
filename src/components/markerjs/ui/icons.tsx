@@ -24,10 +24,11 @@ export {
   ChevronDownIcon,
 };
 
-import RectangleIcon from "@/assets/icons/markers/rectangle.svg?react";
+import FrameIcon from "@/assets/icons/markers/rectangle.svg?react";
 import CoverIcon from "@/assets/icons/markers/rectangle-filled.svg?react";
-import EllipseIcon from "@/assets/icons/markers/oval-vertical.svg?react";
+import EllipseFrameIcon from "@/assets/icons/markers/oval-vertical.svg?react";
+import EllipseIcon from "@/assets/icons/markers/oval-vertical-filled.svg?react";
 import HighlightIcon from "@/assets/icons/markers/highlight.svg?react";
 
 // marker icons
-export { RectangleIcon, CoverIcon, EllipseIcon, HighlightIcon };
+export { FrameIcon, CoverIcon, EllipseFrameIcon, EllipseIcon, HighlightIcon };
