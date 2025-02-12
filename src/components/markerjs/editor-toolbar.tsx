@@ -1,5 +1,5 @@
 import { ToolbarAction } from "@/models/toolbar";
-import { PointerIcon } from "./ui/icons";
+import { DeleteIcon, DownloadIcon, PointerIcon } from "./ui/icons";
 import ToolbarActionButton from "./ui/toolbar-action-button";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 const EditorToolbar = ({ onAction, ...props }: Props) => {
   return (
     <div
-      className="flex space-x-1 p-2 justify-between border-b border-slate-100 bg-white"
+      className="flex space-x-1 p-2 justify-between border-b border-slate-100"
       {...props}
     >
       <div className="inline-flex space-x-1">
@@ -19,9 +19,22 @@ const EditorToolbar = ({ onAction, ...props }: Props) => {
           action="select"
           onAction={onAction}
         />
+        <ToolbarActionButton
+          icon={DeleteIcon}
+          title="Delete"
+          action="delete"
+          onAction={onAction}
+        />
       </div>
       <div className="inline-flex space-x-1">markers</div>
-      <div className="inline-flex space-x-1"></div>
+      <div className="inline-flex space-x-1">
+        <ToolbarActionButton
+          icon={DownloadIcon}
+          title="Download"
+          action="download"
+          onAction={onAction}
+        />
+      </div>
     </div>
   );
 };

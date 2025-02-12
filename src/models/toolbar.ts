@@ -3,6 +3,7 @@ export type ToolbarAction =
   | "delete"
   | "delete-all"
   | "save"
+  | "download"
   | "close"
   | "undo"
   | "redo"
