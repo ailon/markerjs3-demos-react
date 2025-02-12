@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import {
   AnnotationState,
   ArrowMarker,
+  CalloutMarker,
+  CaptionFrameMarker,
   CoverMarker,
   EllipseFrameMarker,
   EllipseMarker,
@@ -10,6 +12,7 @@ import {
   LineMarker,
   MarkerArea,
   MeasurementMarker,
+  TextMarker,
 } from "@markerjs/markerjs3";
 import EditorToolbar from "./editor-toolbar";
 import EditorToolbox from "./editor-toolbox";
@@ -21,6 +24,8 @@ import {
 import { EditorState } from "@/models/editor";
 import {
   ArrowIcon,
+  CalloutIcon,
+  CaptionFrameIcon,
   CoverIcon,
   EllipseFrameIcon,
   EllipseIcon,
@@ -28,6 +33,7 @@ import {
   HighlightIcon,
   LineIcon,
   MeasurementIcon,
+  TextIcon,
 } from "./ui/icons";
 
 const markerTypes: MarkerTypeList = [
@@ -78,6 +84,26 @@ const markerTypes: MarkerTypeList = [
         icon: MeasurementIcon,
         name: "Measure",
         markerType: MeasurementMarker,
+      },
+    ],
+  },
+  {
+    name: "Text",
+    markerTypes: [
+      {
+        icon: TextIcon,
+        name: "Text",
+        markerType: TextMarker,
+      },
+      {
+        icon: CalloutIcon,
+        name: "Callout",
+        markerType: CalloutMarker,
+      },
+      {
+        icon: CaptionFrameIcon,
+        name: "Captioned frame",
+        markerType: CaptionFrameMarker,
       },
     ],
   },

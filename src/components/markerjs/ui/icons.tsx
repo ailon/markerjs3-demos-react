@@ -34,6 +34,10 @@ import ArrowIcon from "@/assets/icons/markers/arrow-narrow-right.svg?react";
 import LineIcon from "@/assets/icons/markers/line.svg?react";
 import MeasurementIcon from "@/assets/icons/markers/ruler-measure.svg?react";
 
+import TextIcon from "@/assets/icons/markers/text-size.svg?react";
+import CalloutIcon from "@/assets/icons/markers/bubble-text.svg?react";
+import CaptionFrameIcon from "@/assets/icons/markers/text-resize.svg?react";
+
 // marker icons
 export {
   FrameIcon,
@@ -44,4 +48,7 @@ export {
   ArrowIcon,
   LineIcon,
   MeasurementIcon,
+  TextIcon,
+  CalloutIcon,
+  CaptionFrameIcon,
 };
