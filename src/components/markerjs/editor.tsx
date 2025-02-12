@@ -8,10 +8,12 @@ import {
   EllipseFrameMarker,
   EllipseMarker,
   FrameMarker,
+  FreehandMarker,
   HighlightMarker,
   LineMarker,
   MarkerArea,
   MeasurementMarker,
+  PolygonMarker,
   TextMarker,
 } from "@markerjs/markerjs3";
 import EditorToolbar from "./editor-toolbar";
@@ -30,9 +32,11 @@ import {
   EllipseFrameIcon,
   EllipseIcon,
   FrameIcon,
+  FreehandIcon,
   HighlightIcon,
   LineIcon,
   MeasurementIcon,
+  PolygonIcon,
   TextIcon,
 } from "./ui/icons";
 
@@ -104,6 +108,21 @@ const markerTypes: MarkerTypeList = [
         icon: CaptionFrameIcon,
         name: "Captioned frame",
         markerType: CaptionFrameMarker,
+      },
+    ],
+  },
+  {
+    name: "Advanced shapes",
+    markerTypes: [
+      {
+        icon: FreehandIcon,
+        name: "Freehand",
+        markerType: FreehandMarker,
+      },
+      {
+        icon: PolygonIcon,
+        name: "Polygon",
+        markerType: PolygonMarker,
       },
     ],
   },

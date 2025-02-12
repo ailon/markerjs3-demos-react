@@ -38,6 +38,9 @@ import TextIcon from "@/assets/icons/markers/text-size.svg?react";
 import CalloutIcon from "@/assets/icons/markers/bubble-text.svg?react";
 import CaptionFrameIcon from "@/assets/icons/markers/text-resize.svg?react";
 
+import FreehandIcon from "@/assets/icons/markers/scribble.svg?react";
+import PolygonIcon from "@/assets/icons/markers/polygon.svg?react";
+
 // marker icons
 export {
   FrameIcon,
@@ -51,4 +54,6 @@ export {
   TextIcon,
   CalloutIcon,
   CaptionFrameIcon,
+  FreehandIcon,
+  PolygonIcon,
 };
