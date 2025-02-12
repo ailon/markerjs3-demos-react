@@ -170,6 +170,18 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
     }
   };
 
+  const updateCalculatedEditorState = () => {
+    if (editor.current) {
+      const editorInstance = editor.current;
+      setEditorState((prevState) => ({
+        ...prevState,
+        canUndo: editorInstance.isUndoPossible,
+        canRedo: editorInstance.isRedoPossible,
+        canDelete: editorInstance.currentMarkerEditor !== undefined, // @todo: handle multiple markers
+      }));
+    }
+  };
+
   useEffect(() => {
     if (!editor.current && editorContainer.current) {
       const targetImg = document.createElement("img");
@@ -181,23 +193,18 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
       editor.current.targetWidth = 800;
 
       editor.current.addEventListener("areastatechange", () => {
-        if (editor.current) {
-          const editorInstance = editor.current;
-          setEditorState((prevState) => ({
-            ...prevState,
-            canUndo: editorInstance.isUndoPossible,
-            canRedo: editorInstance.isRedoPossible,
-            canDelete: editorInstance.currentMarkerEditor !== undefined, // @todo: handle multiple markers
-          }));
-        }
+        updateCalculatedEditorState();
       });
 
       editor.current.addEventListener("markerselect", (e) => {
+        updateCalculatedEditorState();
         const markerEditor = e.detail.markerEditor;
         console.log(markerEditor.marker.typeName);
       });
+
       editor.current.addEventListener("markerdeselect", () => {
-        // setCurrentMarker(null);
+        updateCalculatedEditorState();
+        setCurrentMarkerType(null);
       });
 
       editor.current.addEventListener("markercreate", () => {
