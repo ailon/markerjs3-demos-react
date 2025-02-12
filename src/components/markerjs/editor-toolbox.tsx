@@ -36,7 +36,7 @@ const EditorToolbox = ({ editorState, onAction, ...props }: Props) => {
           disabled={!editorState.canRedo}
         />
       </div>
-      <div className="inline-flex space-x-1">properties</div>
+      <div className="inline-flex space-x-1">{/* properties */}</div>
       <div className="inline-flex space-x-1">
         <ToolbarActionButton
           icon={ZoomOutIcon}

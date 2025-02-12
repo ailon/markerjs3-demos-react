@@ -50,8 +50,8 @@ const EditorToolbar = ({
 
       <div className="inline-flex space-x-1">
         {markerTypes.map((markerListItem) => {
+          // @todo support single items
           if (isMarkerTypeGroup(markerListItem)) {
-            console.log(markerListItem);
             return (
               <ToolbarMarkerGroup
                 key={markerListItem.name}

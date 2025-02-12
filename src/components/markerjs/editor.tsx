@@ -148,14 +148,45 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
     useState<MarkerTypeItem | null>(null);
 
   const handleToolbarAction = (action: ToolbarAction) => {
-    switch (action) {
-      case "select": {
-        setEditorState((prevState) => ({
-          ...prevState,
-          mode: "select",
-        }));
-        break;
+    if (editor.current) {
+      switch (action) {
+        case "select": {
+          setEditorState((prevState) => ({
+            ...prevState,
+            mode: "select",
+          }));
+          editor.current.switchToSelectMode();
+          break;
+        }
+        case "delete": {
+          // @todo confirm delete
+          editor.current.deleteSelectedMarkers();
+          break;
+        }
+        case "undo": {
+          editor.current.undo();
+          break;
+        }
+        case "redo": {
+          editor.current.redo();
+          break;
+        }
+        case "zoom-in": {
+          editor.current.zoomLevel += 0.1;
+          break;
+        }
+        case "zoom-out": {
+          if (editor.current.zoomLevel > 0.2) {
+            editor.current.zoomLevel -= 0.1;
+          }
+          break;
+        }
+        case "zoom-reset": {
+          editor.current.zoomLevel = 1;
+          break;
+        }
       }
+      updateCalculatedEditorState();
     }
   };
 
@@ -196,10 +227,10 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
         updateCalculatedEditorState();
       });
 
-      editor.current.addEventListener("markerselect", (e) => {
+      editor.current.addEventListener("markerselect", () => {
         updateCalculatedEditorState();
-        const markerEditor = e.detail.markerEditor;
-        console.log(markerEditor.marker.typeName);
+        // const markerEditor = e.detail.markerEditor;
+        // console.log(markerEditor.marker.typeName);
       });
 
       editor.current.addEventListener("markerdeselect", () => {
