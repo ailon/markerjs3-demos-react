@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 import { AnnotationState, MarkerArea } from "@markerjs/markerjs3";
-import EditorToolbar from "./front-page-editor-toolbar";
-import EditorToolbox from "./front-page-editor-toolbox";
+import EditorToolbar from "./editor-toolbar";
+import EditorToolbox from "./editor-toolbox";
 
 type Props = {
   targetImageSrc: string;
   annotation?: AnnotationState;
 };
 
-const FrontPageEditor = ({ targetImageSrc, annotation }: Props) => {
+const Editor = ({ targetImageSrc, annotation }: Props) => {
   const editorContainer = useRef<HTMLDivElement | null>(null);
   const editor = useRef<MarkerArea | null>(null);
 
@@ -53,4 +53,4 @@ const FrontPageEditor = ({ targetImageSrc, annotation }: Props) => {
   );
 };
 
-export default FrontPageEditor;
+export default Editor;

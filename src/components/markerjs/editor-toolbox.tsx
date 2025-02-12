@@ -1,5 +1,5 @@
-import { PointerIcon } from "../ui/icons";
-import ToolbarButton from "../ui/toolbar-button";
+import { PointerIcon } from "./ui/icons";
+import ToolbarButton from "./ui/toolbar-button";
 
 type Props = React.ComponentProps<"div">;
 

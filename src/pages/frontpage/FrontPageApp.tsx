@@ -1,9 +1,9 @@
-import FrontPageEditor from "@/components/markerjs/frontpage/front-page-editor";
+import Editor from "@/components/markerjs/editor";
 
 function App() {
   return (
     <div className="w-screen h-screen flex justify-center items-center">
-      <FrontPageEditor targetImageSrc="/sample-images/phone-modules.jpg" />
+      <Editor targetImageSrc="/sample-images/phone-modules.jpg" />
     </div>
   );
 }
