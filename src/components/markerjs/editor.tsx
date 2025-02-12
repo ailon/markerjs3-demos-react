@@ -1,9 +1,37 @@
 import { useEffect, useRef, useState } from "react";
-import { AnnotationState, MarkerArea } from "@markerjs/markerjs3";
+import {
+  AnnotationState,
+  EllipseMarker,
+  FrameMarker,
+  MarkerArea,
+} from "@markerjs/markerjs3";
 import EditorToolbar from "./editor-toolbar";
 import EditorToolbox from "./editor-toolbox";
-import { ToolbarAction } from "@/models/toolbar";
+import {
+  MarkerTypeItem,
+  MarkerTypeList,
+  ToolbarAction,
+} from "@/models/toolbar";
 import { EditorState } from "@/models/editor";
+import { EllipseIcon, RectangleIcon } from "./ui/icons";
+
+const markerTypes: MarkerTypeList = [
+  {
+    name: "Basic shapes",
+    markerTypes: [
+      {
+        icon: RectangleIcon,
+        name: "Rectangle",
+        markerType: FrameMarker,
+      },
+      {
+        icon: EllipseIcon,
+        name: "Ellipse",
+        markerType: EllipseMarker,
+      },
+    ],
+  },
+];
 
 type Props = {
   targetImageSrc: string;
@@ -20,8 +48,18 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
     canDelete: false,
   });
 
-  const onToolbarAction = (action: ToolbarAction) => {
+  const [currentMarkerType, setCurrentMarkerType] =
+    useState<MarkerTypeItem | null>(null);
+
+  const handleToolbarAction = (action: ToolbarAction) => {
     console.log(action);
+  };
+
+  const handleNewMarker = (markerType: MarkerTypeItem | null) => {
+    setCurrentMarkerType(markerType);
+    if (editor.current && markerType) {
+      editor.current.createMarker(markerType.markerType);
+    }
   };
 
   useEffect(() => {
@@ -61,14 +99,23 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] w-full h-full">
       <div>
-        <EditorToolbar editorState={editorState} onAction={onToolbarAction} />
+        <EditorToolbar
+          markerTypes={markerTypes}
+          currentMarkerType={currentMarkerType}
+          editorState={editorState}
+          onAction={handleToolbarAction}
+          onNewMarker={handleNewMarker}
+        />
       </div>
       <div
         ref={editorContainer}
         className="flex overflow-hidden bg-slate-50"
       ></div>
       <div>
-        <EditorToolbox editorState={editorState} onAction={onToolbarAction} />
+        <EditorToolbox
+          editorState={editorState}
+          onAction={handleToolbarAction}
+        />
       </div>
     </div>
   );

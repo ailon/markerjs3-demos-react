@@ -9,6 +9,9 @@ import ZoomInIcon from "@/assets/icons/zoom-in.svg?react";
 import ZoomOutIcon from "@/assets/icons/zoom-out.svg?react";
 import ZoomResetIcon from "@/assets/icons/zoom-reset.svg?react";
 
+import ChevronDownIcon from "@/assets/icons/chevron-down.svg?react";
+
+// general UI icons
 export {
   PointerIcon,
   DeleteIcon,
@@ -18,4 +21,13 @@ export {
   ZoomInIcon,
   ZoomOutIcon,
   ZoomResetIcon,
+  ChevronDownIcon,
 };
+
+import RectangleIcon from "@/assets/icons/markers/rectangle.svg?react";
+import CoverIcon from "@/assets/icons/markers/rectangle-filled.svg?react";
+import EllipseIcon from "@/assets/icons/markers/oval-vertical.svg?react";
+import HighlightIcon from "@/assets/icons/markers/highlight.svg?react";
+
+// marker icons
+export { RectangleIcon, CoverIcon, EllipseIcon, HighlightIcon };
