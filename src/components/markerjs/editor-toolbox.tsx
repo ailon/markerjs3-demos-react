@@ -1,20 +1,26 @@
+import { ToolbarAction } from "@/models/toolbar";
 import { PointerIcon } from "./ui/icons";
-import ToolbarButton from "./ui/toolbar-button";
+import ToolbarActionButton from "./ui/toolbar-action-button";
 
-type Props = React.ComponentProps<"div">;
+type Props = {
+  onAction: (action: ToolbarAction) => void;
+} & React.ComponentProps<"div">;
 
-const EditorToolbox = ({ ...props }: Props) => {
+const EditorToolbox = ({ onAction, ...props }: Props) => {
   return (
     <div
       className="flex space-x-1 p-2 justify-between border-t border-slate-100 bg-white"
       {...props}
     >
-      <div className="inline-flex space-x-1">
-        <ToolbarButton icon={PointerIcon} title="Select" />
-      </div>
+      <div className="inline-flex space-x-1"></div>
       <div className="inline-flex space-x-1">markers</div>
       <div className="inline-flex space-x-1">
-        <ToolbarButton icon={PointerIcon} title="Select" />
+        <ToolbarActionButton
+          icon={PointerIcon}
+          title="Select"
+          action="select"
+          onAction={onAction}
+        />
       </div>
     </div>
   );

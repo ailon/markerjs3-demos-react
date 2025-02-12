@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { AnnotationState, MarkerArea } from "@markerjs/markerjs3";
 import EditorToolbar from "./editor-toolbar";
 import EditorToolbox from "./editor-toolbox";
+import { ToolbarAction } from "@/models/toolbar";
 
 type Props = {
   targetImageSrc: string;
@@ -11,6 +12,10 @@ type Props = {
 const Editor = ({ targetImageSrc, annotation }: Props) => {
   const editorContainer = useRef<HTMLDivElement | null>(null);
   const editor = useRef<MarkerArea | null>(null);
+
+  const onToolbarAction = (action: ToolbarAction) => {
+    console.log(action);
+  };
 
   useEffect(() => {
     if (!editor.current && editorContainer.current) {
@@ -40,14 +45,14 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
   return (
     <div className="grid grid-rows-[auto_1fr_auto] w-full h-full">
       <div>
-        <EditorToolbar />
+        <EditorToolbar onAction={onToolbarAction} />
       </div>
       <div
         ref={editorContainer}
         className="flex overflow-hidden bg-slate-50"
       ></div>
       <div>
-        <EditorToolbox />
+        <EditorToolbox onAction={onToolbarAction} />
       </div>
     </div>
   );
