@@ -8,8 +8,14 @@ import {
 } from "./ui/icons";
 import ToolbarActionButton from "./ui/toolbar-action-button";
 import { EditorState } from "@/models/editor";
-import { MarkerBaseEditor } from "@markerjs/markerjs3";
+import {
+  CalloutMarkerEditor,
+  LinearMarkerEditor,
+  MarkerBaseEditor,
+  ShapeOutlineMarkerEditor,
+} from "@markerjs/markerjs3";
 import OpacityPanel from "./toolbox/opacity-panel";
+import StrokePanel from "./toolbox/stroke-panel";
 
 type Props = {
   editorState: EditorState;
@@ -29,6 +35,18 @@ const EditorToolbox = ({
     }
 
     return markerEditor.is(MarkerBaseEditor);
+  };
+
+  const canEditStroke = () => {
+    if (markerEditor === null) {
+      return false;
+    }
+
+    return (
+      markerEditor.is(ShapeOutlineMarkerEditor) ||
+      markerEditor.is(LinearMarkerEditor) ||
+      markerEditor.is(CalloutMarkerEditor)
+    );
   };
 
   return (
@@ -52,9 +70,12 @@ const EditorToolbox = ({
           disabled={!editorState.canRedo}
         />
       </div>
+
       <div className="inline-flex space-x-1">
+        {canEditStroke() && <StrokePanel markerEditor={markerEditor!} />}
         {canEditOpacity() && <OpacityPanel markerEditor={markerEditor!} />}
       </div>
+
       <div className="inline-flex space-x-1">
         <ToolbarActionButton
           icon={ZoomOutIcon}

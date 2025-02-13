@@ -30,7 +30,7 @@ const ToolboxPanel = ({ title, icon: Icon, children }: Props) => {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="min-w-48 w-auto p-4">
-          <div className="flex flex-col space-y-3">
+          <div className="flex flex-col space-y-6">
             <h2 className="text-sm font-semibold">{title}</h2>
             {children}
           </div>
