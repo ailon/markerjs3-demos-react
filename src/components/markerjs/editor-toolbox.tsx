@@ -10,8 +10,11 @@ import ToolbarActionButton from "./ui/toolbar-action-button";
 import { EditorState } from "@/models/editor";
 import {
   CalloutMarkerEditor,
+  CaptionFrameMarkerEditor,
+  FreehandMarkerEditor,
   LinearMarkerEditor,
   MarkerBaseEditor,
+  PolygonMarkerEditor,
   ShapeOutlineMarkerEditor,
 } from "@markerjs/markerjs3";
 import OpacityPanel from "./toolbox/opacity-panel";
@@ -45,7 +48,10 @@ const EditorToolbox = ({
     return (
       markerEditor.is(ShapeOutlineMarkerEditor) ||
       markerEditor.is(LinearMarkerEditor) ||
-      markerEditor.is(CalloutMarkerEditor)
+      markerEditor.is(CalloutMarkerEditor) ||
+      markerEditor.is(FreehandMarkerEditor) ||
+      markerEditor.is(PolygonMarkerEditor) ||
+      markerEditor.is(CaptionFrameMarkerEditor)
     );
   };
 
