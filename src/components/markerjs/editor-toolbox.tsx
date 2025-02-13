@@ -9,7 +9,7 @@ import {
 import ToolbarActionButton from "./ui/toolbar-action-button";
 import { EditorState } from "@/models/editor";
 import { MarkerBaseEditor } from "@markerjs/markerjs3";
-import OpacityPanel from "./opacity-panel";
+import OpacityPanel from "./toolbox/opacity-panel";
 
 type Props = {
   editorState: EditorState;
