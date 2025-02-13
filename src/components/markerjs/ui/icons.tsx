@@ -11,6 +11,8 @@ import ZoomResetIcon from "@/assets/icons/zoom-reset.svg?react";
 
 import ChevronDownIcon from "@/assets/icons/chevron-down.svg?react";
 
+import OpacityIcon from "@/assets/icons/circle-half-2.svg?react";
+
 // general UI icons
 export {
   PointerIcon,
@@ -22,6 +24,7 @@ export {
   ZoomOutIcon,
   ZoomResetIcon,
   ChevronDownIcon,
+  OpacityIcon,
 };
 
 import FrameIcon from "@/assets/icons/markers/rectangle.svg?raw";

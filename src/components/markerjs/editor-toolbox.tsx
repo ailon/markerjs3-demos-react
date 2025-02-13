@@ -8,13 +8,29 @@ import {
 } from "./ui/icons";
 import ToolbarActionButton from "./ui/toolbar-action-button";
 import { EditorState } from "@/models/editor";
+import { MarkerBaseEditor } from "@markerjs/markerjs3";
+import OpacityPanel from "./opacity-panel";
 
 type Props = {
   editorState: EditorState;
+  markerEditor: MarkerBaseEditor | null;
   onAction: (action: ToolbarAction) => void;
 } & React.ComponentProps<"div">;
 
-const EditorToolbox = ({ editorState, onAction, ...props }: Props) => {
+const EditorToolbox = ({
+  editorState,
+  markerEditor,
+  onAction,
+  ...props
+}: Props) => {
+  const canEditOpacity = () => {
+    if (markerEditor === null) {
+      return false;
+    }
+
+    return markerEditor.is(MarkerBaseEditor);
+  };
+
   return (
     <div
       className="flex space-x-1 p-2 justify-between border-t border-slate-100"
@@ -36,7 +52,9 @@ const EditorToolbox = ({ editorState, onAction, ...props }: Props) => {
           disabled={!editorState.canRedo}
         />
       </div>
-      <div className="inline-flex space-x-1">{/* properties */}</div>
+      <div className="inline-flex space-x-1">
+        {canEditOpacity() && <OpacityPanel markerEditor={markerEditor!} />}
+      </div>
       <div className="inline-flex space-x-1">
         <ToolbarActionButton
           icon={ZoomOutIcon}

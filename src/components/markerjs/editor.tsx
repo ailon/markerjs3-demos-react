@@ -13,6 +13,7 @@ import {
   HighlightMarker,
   LineMarker,
   MarkerArea,
+  MarkerBaseEditor,
   MeasurementMarker,
   PolygonMarker,
   TextMarker,
@@ -153,6 +154,9 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
   const [currentMarkerType, setCurrentMarkerType] =
     useState<MarkerTypeItem | null>(null);
 
+  const [currentMarkerEditor, setCurrentMarkerEditor] =
+    useState<MarkerBaseEditor | null>(null);
+
   const handleToolbarAction = (action: ToolbarAction) => {
     if (editor.current) {
       switch (action) {
@@ -237,13 +241,15 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
         updateCalculatedEditorState();
       });
 
-      editor.current.addEventListener("markerselect", () => {
+      editor.current.addEventListener("markerselect", (ev) => {
+        setCurrentMarkerEditor(ev.detail.markerEditor);
         updateCalculatedEditorState();
         // const markerEditor = e.detail.markerEditor;
         // console.log(markerEditor.marker.typeName);
       });
 
       editor.current.addEventListener("markerdeselect", () => {
+        setCurrentMarkerEditor(null);
         updateCalculatedEditorState();
       });
 
@@ -279,6 +285,7 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
       <div>
         <EditorToolbox
           editorState={editorState}
+          markerEditor={currentMarkerEditor}
           onAction={handleToolbarAction}
         />
       </div>
