@@ -9,55 +9,63 @@ import CrossMarkEmoji from "@/assets/icons/emojis/fluent-emoji--cross-mark.svg?r
 import HeartEmoji from "@/assets/icons/emojis/fluent-emoji--heart-suit.svg?raw";
 import ThumbsUpEmoji from "@/assets/icons/emojis/fluent-emoji--thumbs-up.svg?raw";
 import ThumbsDownEmoji from "@/assets/icons/emojis/fluent-emoji--thumbs-down.svg?raw";
+import { MarkerTypeItem } from "@/models/toolbar";
+import { CustomImageMarker } from "@markerjs/markerjs3";
 
-export interface CustomSvgImage {
-  name: string;
-  svgString: string;
-}
-
-export const emojis: CustomSvgImage[] = [
+export const emojis: MarkerTypeItem[] = [
   {
     name: "Smiley",
-    svgString: SmileyEmoji,
+    markerType: CustomImageMarker,
+    icon: SmileyEmoji,
   },
   {
     name: "Disappointed face",
-    svgString: DisappointedEmoji,
+    markerType: CustomImageMarker,
+    icon: DisappointedEmoji,
   },
   {
     name: "Crying face",
-    svgString: CryingEmoji,
+    markerType: CustomImageMarker,
+    icon: CryingEmoji,
   },
   {
     name: "Angry face",
-    svgString: AngryEmoji,
+    markerType: CustomImageMarker,
+    icon: AngryEmoji,
   },
   {
     name: "Exclamation mark",
-    svgString: ExclamationMarkEmoji,
+    markerType: CustomImageMarker,
+    icon: ExclamationMarkEmoji,
   },
   {
     name: "Question mark",
-    svgString: QuestionMarkEmoji,
+    markerType: CustomImageMarker,
+    icon: QuestionMarkEmoji,
   },
   {
     name: "Check mark",
-    svgString: CheckMarkEmoji,
+    markerType: CustomImageMarker,
+    icon: CheckMarkEmoji,
   },
   {
     name: "Cross mark",
-    svgString: CrossMarkEmoji,
+    markerType: CustomImageMarker,
+    icon: CrossMarkEmoji,
   },
   {
     name: "Heart",
-    svgString: HeartEmoji,
+    markerType: CustomImageMarker,
+    icon: HeartEmoji,
   },
   {
     name: "Thumbs up",
-    svgString: ThumbsUpEmoji,
+    markerType: CustomImageMarker,
+    icon: ThumbsUpEmoji,
   },
   {
     name: "Thumbs down",
-    svgString: ThumbsDownEmoji,
+    markerType: CustomImageMarker,
+    icon: ThumbsDownEmoji,
   },
 ];

@@ -24,7 +24,7 @@ import {
   MarkerTypeList,
   ToolbarAction,
 } from "@/models/toolbar";
-import { EditorState, NewMarkerOptions } from "@/models/editor";
+import { EditorState } from "@/models/editor";
 import {
   ArrowIcon,
   CalloutIcon,
@@ -40,6 +40,7 @@ import {
   PolygonIcon,
   TextIcon,
 } from "./ui/icons";
+import { emojis } from "./ui/emojis";
 
 const markerTypes: MarkerTypeList = [
   {
@@ -127,6 +128,10 @@ const markerTypes: MarkerTypeList = [
       },
     ],
   },
+  {
+    name: "Emojis",
+    markerTypes: emojis,
+  },
 ];
 
 type Props = {
@@ -191,10 +196,7 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
     }
   };
 
-  const handleNewMarker = (
-    markerType: MarkerTypeItem | null,
-    options?: NewMarkerOptions
-  ) => {
+  const handleNewMarker = (markerType: MarkerTypeItem | null) => {
     setCurrentMarkerType(markerType);
     if (editor.current && markerType) {
       setEditorState((prevState) => ({
@@ -202,12 +204,9 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
         mode: "create",
       }));
       const markerEditor = editor.current.createMarker(markerType.markerType);
-      if (
-        markerEditor &&
-        markerEditor.marker instanceof CustomImageMarker &&
-        options?.svgString
-      ) {
-        markerEditor.marker.svgString = options.svgString;
+      if (markerEditor && markerEditor.marker instanceof CustomImageMarker) {
+        markerEditor.marker.defaultSize = { width: 32, height: 32 };
+        markerEditor.marker.svgString = markerType.icon;
       }
     }
   };

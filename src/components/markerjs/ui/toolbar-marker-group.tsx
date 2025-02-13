@@ -38,7 +38,7 @@ const ToolbarMarkerGroup = ({ markers, toggled, onSelectionChange }: Props) => {
         className="rounded-r-none border-r-0"
         onClick={() => handleMarkerSelection(currentMarkerType)}
       >
-        <currentMarkerType.icon />
+        <span dangerouslySetInnerHTML={{ __html: currentMarkerType.icon }} />
       </Toggle>
       <Popover open={popoverOpen}>
         <PopoverTrigger asChild>
@@ -60,7 +60,7 @@ const ToolbarMarkerGroup = ({ markers, toggled, onSelectionChange }: Props) => {
               title={markerType.name}
               onClick={() => handleMarkerSelection(markerType)}
             >
-              <markerType.icon />
+              <span dangerouslySetInnerHTML={{ __html: markerType.icon }} />
             </Button>
           ))}
         </PopoverContent>

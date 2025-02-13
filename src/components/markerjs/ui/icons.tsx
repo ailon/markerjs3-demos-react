@@ -24,22 +24,19 @@ export {
   ChevronDownIcon,
 };
 
-import FrameIcon from "@/assets/icons/markers/rectangle.svg?react";
-import CoverIcon from "@/assets/icons/markers/rectangle-filled.svg?react";
-import EllipseFrameIcon from "@/assets/icons/markers/oval-vertical.svg?react";
-import EllipseIcon from "@/assets/icons/markers/oval-vertical-filled.svg?react";
-import HighlightIcon from "@/assets/icons/markers/highlight.svg?react";
-
-import ArrowIcon from "@/assets/icons/markers/arrow-narrow-right.svg?react";
-import LineIcon from "@/assets/icons/markers/line.svg?react";
-import MeasurementIcon from "@/assets/icons/markers/ruler-measure.svg?react";
-
-import TextIcon from "@/assets/icons/markers/text-size.svg?react";
-import CalloutIcon from "@/assets/icons/markers/bubble-text.svg?react";
-import CaptionFrameIcon from "@/assets/icons/markers/text-resize.svg?react";
-
-import FreehandIcon from "@/assets/icons/markers/scribble.svg?react";
-import PolygonIcon from "@/assets/icons/markers/polygon.svg?react";
+import FrameIcon from "@/assets/icons/markers/rectangle.svg?raw";
+import CoverIcon from "@/assets/icons/markers/rectangle-filled.svg?raw";
+import EllipseFrameIcon from "@/assets/icons/markers/oval-vertical.svg?raw";
+import EllipseIcon from "@/assets/icons/markers/oval-vertical-filled.svg?raw";
+import HighlightIcon from "@/assets/icons/markers/highlight.svg?raw";
+import ArrowIcon from "@/assets/icons/markers/arrow-narrow-right.svg?raw";
+import LineIcon from "@/assets/icons/markers/line.svg?raw";
+import MeasurementIcon from "@/assets/icons/markers/ruler-measure.svg?raw";
+import TextIcon from "@/assets/icons/markers/text-size.svg?raw";
+import CalloutIcon from "@/assets/icons/markers/bubble-text.svg?raw";
+import CaptionFrameIcon from "@/assets/icons/markers/text-resize.svg?raw";
+import FreehandIcon from "@/assets/icons/markers/scribble.svg?raw";
+import PolygonIcon from "@/assets/icons/markers/polygon.svg?raw";
 
 // marker icons
 export {

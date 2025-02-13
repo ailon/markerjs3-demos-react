@@ -1,4 +1,3 @@
-import { IconComponent } from "@/components/markerjs/ui/icons";
 import { MarkerBase } from "@markerjs/markerjs3";
 
 export type ToolbarAction =
@@ -15,7 +14,7 @@ export type ToolbarAction =
   | "zoom-reset";
 
 export type MarkerTypeItem = {
-  icon: IconComponent;
+  icon: string;
   name: string;
   markerType: typeof MarkerBase;
 };

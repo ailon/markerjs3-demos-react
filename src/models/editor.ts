@@ -4,7 +4,3 @@ export interface EditorState {
   canRedo: boolean;
   canDelete: boolean;
 }
-
-export interface NewMarkerOptions {
-  svgString?: string;
-}
