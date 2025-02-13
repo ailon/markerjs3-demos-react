@@ -27,7 +27,7 @@ const OpacityPanel = ({ markerEditor }: Props) => {
     <ToolboxPanel title="Opacity" icon={OpacityIcon}>
       <div className="flex flex-col space-y-4">
         <div className="flex justify-between items-center space-x-2">
-          <Label htmlFor="opacityInput">Value:</Label>
+          <Label htmlFor="opacityInput">Value</Label>
           <Input
             id="opacityInput"
             value={Math.round(opacity * 100)}

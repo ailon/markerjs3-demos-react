@@ -53,7 +53,7 @@ const StrokePanel = ({ markerEditor }: Props) => {
     <ToolboxPanel title="Stroke" icon={StrokeIcon}>
       <div className="flex flex-col space-y-4">
         <div className="flex justify-between items-center space-x-2">
-          <Label htmlFor="strokeWidthInput">Width:</Label>
+          <Label htmlFor="strokeWidthInput">Width</Label>
           <Input
             id="strokeWidthInput"
             value={strokeWidth}
@@ -75,7 +75,7 @@ const StrokePanel = ({ markerEditor }: Props) => {
       </div>
 
       <div className="flex items-center space-x-4 justify-between">
-        <Label>Style:</Label>
+        <Label>Style</Label>
         <ToggleGroup
           type="single"
           value={strokeStyle}
@@ -95,7 +95,7 @@ const StrokePanel = ({ markerEditor }: Props) => {
       </div>
 
       <div className="flex flex-col space-y-4">
-        <Label>Color:</Label>
+        <Label>Color</Label>
         <ColorPicker
           color={strokeColor}
           onValueChange={handleStrokeColorChange}
