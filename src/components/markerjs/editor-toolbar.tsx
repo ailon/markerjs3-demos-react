@@ -79,6 +79,8 @@ const EditorToolbar = ({
           title="Download"
           variant={variant}
           action="download"
+          disabled={editorState.mode === "rendering"}
+          loading={editorState.mode === "rendering"}
           onAction={onAction}
         />
       </div>

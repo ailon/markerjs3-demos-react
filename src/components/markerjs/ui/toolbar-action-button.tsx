@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { type IconComponent } from "./icons";
+import { LoaderIcon, type IconComponent } from "./icons";
 import { ToolbarAction } from "@/models/toolbar";
 import { Toggle } from "@/components/ui/toggle";
 
@@ -10,6 +10,7 @@ type Props = {
   variant?: "ghost" | "outline";
   toggled?: boolean;
   disabled?: boolean;
+  loading?: boolean;
   action: ToolbarAction;
   onAction: (action: ToolbarAction) => void;
 };
@@ -21,6 +22,7 @@ const ToolbarActionButton = ({
   variant = "ghost",
   toggled,
   disabled,
+  loading = false,
   action,
   onAction,
 }: Props) => {
@@ -35,7 +37,8 @@ const ToolbarActionButton = ({
           disabled={disabled}
           onClick={() => onAction(action)}
         >
-          <Icon />
+          {loading && <LoaderIcon className="animate-spin" />}
+          {!loading && <Icon />}
         </Button>
       )}
       {buttonType === "toggle" && (

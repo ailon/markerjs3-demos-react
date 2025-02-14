@@ -16,6 +16,7 @@ import {
   MarkerBaseEditor,
   MeasurementMarker,
   PolygonMarker,
+  Renderer,
   TextMarker,
 } from "@markerjs/markerjs3";
 import EditorToolbar from "./editor-toolbar";
@@ -196,8 +197,39 @@ const Editor = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
           editor.current.zoomLevel = 1;
           break;
         }
+        case "download": {
+          downloadMarkedImage();
+          break;
+        }
       }
       updateCalculatedEditorState();
+    }
+  };
+
+  const downloadMarkedImage = async () => {
+    if (editor.current) {
+      setEditorState((prevState) => ({
+        ...prevState,
+        mode: "rendering",
+      }));
+      const currentState = editor.current.getState();
+
+      const renderer = new Renderer();
+      renderer.targetImage = editor.current.targetImage;
+      renderer.naturalSize = true;
+      renderer.imageType = "image/png";
+
+      const renderedImage = await renderer.rasterize(currentState);
+
+      const downloadLink = document.createElement("a");
+      downloadLink.href = renderedImage;
+      downloadLink.download = "marked-image.png";
+      downloadLink.click();
+
+      setEditorState((prevState) => ({
+        ...prevState,
+        mode: "select",
+      }));
     }
   };
 

@@ -10,6 +10,7 @@ import ZoomOutIcon from "@/assets/icons/zoom-out.svg?react";
 import ZoomResetIcon from "@/assets/icons/zoom-reset.svg?react";
 
 import ChevronDownIcon from "@/assets/icons/chevron-down.svg?react";
+import LoaderIcon from "@/assets/icons/loader-2.svg?react";
 
 import OpacityIcon from "@/assets/icons/circle-half-2.svg?react";
 import StrokeIcon from "@/assets/icons/border-style-2.svg?react";
@@ -27,6 +28,7 @@ export {
   ZoomOutIcon,
   ZoomResetIcon,
   ChevronDownIcon,
+  LoaderIcon,
   OpacityIcon,
   StrokeIcon,
   FillIcon,
