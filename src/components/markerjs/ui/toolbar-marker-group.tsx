@@ -37,8 +37,9 @@ const ToolbarMarkerGroup = ({
   };
 
   return (
-    <div className="inline-flex">
+    <div className="inline-flex border rounded-md border-transparent hover:border hover:border-slate-200">
       <Toggle
+        title={currentMarkerType.name}
         pressed={toggled}
         variant={variant === "ghost" ? "default" : "outline"}
         className="rounded-r-none border-r-0"
