@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+# marker.js 3 React Demos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains various React demos for [marker.js 3].
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project uses [pnpm](https://pnpm.io/). You can use npm, yarn or other package managers but the instructions below use pnpm.
 
-## Expanding the ESLint configuration
+1. Clone this repository.
+2. Run `pnpm install` to install dependencies.
+3. Run `pnpm dev` to launch the dev server.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Included demos
 
-- Configure the top-level `parserOptions` property like this:
+- [Front page demo](/frontpage/) - the demo seen on the front page of the [marker.js 3] website.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## License
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+These demos are released under the [MIT license](LICENSE). Feel free to use and adapt the code in your projects.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+For marker.js 3 licensing information [click here](https://markerjs.com/#pricing).
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Credits
+
+In addition to [marker.js 3], TypeScript and React these demos are based on the following tools and libraries (and their dependencies):
+
+- [Vite](https://vite.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Tabler Icons](https://tabler.io/icons)
+
+[Demo image](https://www.pexels.com/photo/blue-and-yellow-phone-modules-1476321/) by Dan Cristian Pădureț.
+
+[marker.js 3]: https://markerjs.com
