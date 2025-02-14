@@ -15,10 +15,12 @@ import {
   LinearMarkerEditor,
   MarkerBaseEditor,
   PolygonMarkerEditor,
+  ShapeMarkerEditor,
   ShapeOutlineMarkerEditor,
 } from "@markerjs/markerjs3";
 import OpacityPanel from "./toolbox/opacity-panel";
 import StrokePanel from "./toolbox/stroke-panel";
+import FillPanel from "./toolbox/fill-panel";
 
 type Props = {
   editorState: EditorState;
@@ -57,6 +59,18 @@ const EditorToolbox = ({
     );
   };
 
+  const canEditFill = () => {
+    if (markerEditor === null) {
+      return false;
+    }
+
+    return (
+      markerEditor.is(ShapeMarkerEditor) ||
+      markerEditor.is(CaptionFrameMarkerEditor) ||
+      markerEditor.is(CalloutMarkerEditor)
+    );
+  };
+
   return (
     <div
       className="flex space-x-1 p-2 justify-between border-t border-slate-100"
@@ -84,6 +98,9 @@ const EditorToolbox = ({
       <div className="inline-flex space-x-1">
         {canEditStroke() && (
           <StrokePanel markerEditor={markerEditor!} variant={variant} />
+        )}
+        {canEditFill() && (
+          <FillPanel markerEditor={markerEditor!} variant={variant} />
         )}
         {canEditOpacity() && (
           <OpacityPanel markerEditor={markerEditor!} variant={variant} />

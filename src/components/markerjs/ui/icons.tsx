@@ -13,6 +13,7 @@ import ChevronDownIcon from "@/assets/icons/chevron-down.svg?react";
 
 import OpacityIcon from "@/assets/icons/circle-half-2.svg?react";
 import StrokeIcon from "@/assets/icons/border-style-2.svg?react";
+import FillIcon from "@/assets/icons/droplet-half-2.svg?react";
 
 // general UI icons
 export {
@@ -27,6 +28,7 @@ export {
   ChevronDownIcon,
   OpacityIcon,
   StrokeIcon,
+  FillIcon,
 };
 
 import FrameIcon from "@/assets/icons/markers/rectangle.svg?raw";
