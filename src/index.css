@@ -3,6 +3,8 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
+/* workaround for 2-in-1 Windows devices */
+@custom-variant hover (&:hover);
 
 :root {
   --background: hsl(0 0% 100%);
