@@ -268,7 +268,15 @@ const Editor = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
       editor.current = new MarkerArea();
 
       editor.current.targetImage = targetImg;
-      editor.current.targetWidth = 800;
+
+      // set a reasonable size for the target image in the editor
+      const editorAreaWidth = editorContainer.current.clientWidth;
+      editor.current.targetWidth =
+        editorAreaWidth < 400
+          ? 400
+          : editorAreaWidth < 2000
+          ? Math.round((editorAreaWidth * 0.9) / 10) * 10
+          : -1;
 
       editor.current.addEventListener("areastatechange", () => {
         updateCalculatedEditorState();
@@ -277,8 +285,6 @@ const Editor = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
       editor.current.addEventListener("markerselect", (ev) => {
         setCurrentMarkerEditor(ev.detail.markerEditor);
         updateCalculatedEditorState();
-        // const markerEditor = e.detail.markerEditor;
-        // console.log(markerEditor.marker.typeName);
       });
 
       editor.current.addEventListener("markerdeselect", () => {
