@@ -13,6 +13,7 @@ type Props = {
   markerTypes: MarkerTypeList;
   currentMarkerType: MarkerTypeItem | null;
   editorState: EditorState;
+  variant?: "ghost" | "outline";
   onAction: (action: ToolbarAction) => void;
   onNewMarker: (markerType: MarkerTypeItem) => void;
 } & React.ComponentProps<"div">;
@@ -21,6 +22,7 @@ const EditorToolbar = ({
   markerTypes,
   currentMarkerType,
   editorState,
+  variant = "ghost",
   onAction,
   onNewMarker,
   ...props
@@ -35,6 +37,7 @@ const EditorToolbar = ({
           icon={PointerIcon}
           title="Select"
           buttonType="toggle"
+          variant={variant}
           toggled={editorState.mode === "select"}
           action="select"
           onAction={onAction}
@@ -42,20 +45,22 @@ const EditorToolbar = ({
         <ToolbarActionButton
           icon={DeleteIcon}
           title="Delete"
+          variant={variant}
           action="delete"
           onAction={onAction}
           disabled={!editorState.canDelete}
         />
       </div>
 
-      <div className="inline-flex space-x-1">
-        {markerTypes.map((markerListItem) => {
+      <div className="inline-flex space-x-1 items-center">
+        {markerTypes.map((markerListItem) => (
           // @todo support single items
-          if (isMarkerTypeGroup(markerListItem)) {
-            return (
+          <>
+            {isMarkerTypeGroup(markerListItem) && (
               <ToolbarMarkerGroup
                 key={markerListItem.name}
                 markers={markerListItem}
+                variant={variant}
                 toggled={
                   editorState.mode === "create" && currentMarkerType
                     ? markerListItem.markerTypes.includes(currentMarkerType)
@@ -63,15 +68,16 @@ const EditorToolbar = ({
                 }
                 onSelectionChange={onNewMarker}
               />
-            );
-          }
-        })}
+            )}
+          </>
+        ))}
       </div>
 
       <div className="inline-flex space-x-1">
         <ToolbarActionButton
           icon={DownloadIcon}
           title="Download"
+          variant={variant}
           action="download"
           onAction={onAction}
         />

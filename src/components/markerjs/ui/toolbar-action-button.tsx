@@ -7,6 +7,7 @@ type Props = {
   icon: IconComponent;
   title: string;
   buttonType?: "button" | "toggle";
+  variant?: "ghost" | "outline";
   toggled?: boolean;
   disabled?: boolean;
   action: ToolbarAction;
@@ -17,6 +18,7 @@ const ToolbarActionButton = ({
   icon: Icon,
   title,
   buttonType,
+  variant = "ghost",
   toggled,
   disabled,
   action,
@@ -26,7 +28,7 @@ const ToolbarActionButton = ({
     <>
       {(buttonType === undefined || buttonType === "button") && (
         <Button
-          variant="outline"
+          variant={variant}
           className="bg-transparent"
           size="icon"
           title={title}
@@ -38,7 +40,7 @@ const ToolbarActionButton = ({
       )}
       {buttonType === "toggle" && (
         <Toggle
-          variant="outline"
+          variant={variant === "ghost" ? "default" : "outline"}
           className="bg-transparent"
           title={title}
           pressed={toggled ? true : false}

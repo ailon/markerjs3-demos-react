@@ -7,14 +7,26 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { IconComponent } from "@/components/markerjs/ui/icons";
+import { MarkerBaseEditor } from "@markerjs/markerjs3";
 
 type Props = {
   title: string;
   icon: IconComponent;
+  variant?: "ghost" | "outline";
   children: ReactNode;
 };
 
-const ToolboxPanel = ({ title, icon: Icon, children }: Props) => {
+export type PanelProps = {
+  markerEditor: MarkerBaseEditor;
+  variant?: "ghost" | "outline";
+};
+
+const ToolboxPanel = ({
+  title,
+  icon: Icon,
+  variant = "ghost",
+  children,
+}: Props) => {
   const [popoverOpen, setPopoverOpen] = useState(false);
 
   return (
@@ -22,7 +34,7 @@ const ToolboxPanel = ({ title, icon: Icon, children }: Props) => {
       <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
         <PopoverTrigger asChild>
           <Button
-            variant="outline"
+            variant={variant}
             title={title}
             onClick={() => setPopoverOpen(!popoverOpen)}
           >

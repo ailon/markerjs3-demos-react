@@ -137,10 +137,11 @@ const markerTypes: MarkerTypeList = [
 
 type Props = {
   targetImageSrc: string;
+  variant?: "ghost" | "outline";
   annotation?: AnnotationState;
 };
 
-const Editor = ({ targetImageSrc, annotation }: Props) => {
+const Editor = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
   const editorContainer = useRef<HTMLDivElement | null>(null);
   const editor = useRef<MarkerArea | null>(null);
 
@@ -271,6 +272,7 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
     <div className="grid grid-rows-[auto_1fr_auto] w-full h-full">
       <div>
         <EditorToolbar
+          variant={variant}
           markerTypes={markerTypes}
           currentMarkerType={currentMarkerType}
           editorState={editorState}
@@ -284,6 +286,7 @@ const Editor = ({ targetImageSrc, annotation }: Props) => {
       ></div>
       <div>
         <EditorToolbox
+          variant={variant}
           editorState={editorState}
           markerEditor={currentMarkerEditor}
           onAction={handleToolbarAction}

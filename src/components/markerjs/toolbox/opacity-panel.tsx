@@ -1,17 +1,12 @@
 import { useState } from "react";
 
-import { MarkerBaseEditor } from "@markerjs/markerjs3";
 import { OpacityIcon } from "../ui/icons";
 import { Slider } from "../../ui/slider";
 import { Input } from "../../ui/input";
-import ToolboxPanel from "../ui/toolbox-panel";
+import ToolboxPanel, { PanelProps } from "../ui/toolbox-panel";
 import { Label } from "@/components/ui/label";
 
-type Props = {
-  markerEditor: MarkerBaseEditor;
-};
-
-const OpacityPanel = ({ markerEditor }: Props) => {
+const OpacityPanel = ({ markerEditor }: PanelProps) => {
   const [opacity, setOpacity] = useState(markerEditor.opacity);
 
   const handleOpacityChange = (newValue: number) => {

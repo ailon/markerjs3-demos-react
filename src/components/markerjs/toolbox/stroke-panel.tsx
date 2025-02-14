@@ -1,10 +1,9 @@
 import { FC, SVGProps, useState } from "react";
 
-import { MarkerBaseEditor } from "@markerjs/markerjs3";
 import { StrokeIcon } from "../ui/icons";
 import { Slider } from "../../ui/slider";
 import { Input } from "../../ui/input";
-import ToolboxPanel from "../ui/toolbox-panel";
+import ToolboxPanel, { PanelProps } from "../ui/toolbox-panel";
 import { Label } from "@/components/ui/label";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import ColorPicker from "../ui/color-picker";
@@ -25,11 +24,7 @@ const StrokeStyleVisual: FC<SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
-type Props = {
-  markerEditor: MarkerBaseEditor;
-};
-
-const StrokePanel = ({ markerEditor }: Props) => {
+const StrokePanel = ({ markerEditor, variant = "ghost" }: PanelProps) => {
   const [strokeWidth, setStrokeWidth] = useState(markerEditor.strokeWidth);
   const [strokeStyle, setStrokeStyle] = useState(markerEditor.strokeDasharray);
   const [strokeColor, setStrokeColor] = useState(markerEditor.strokeColor);
@@ -50,7 +45,7 @@ const StrokePanel = ({ markerEditor }: Props) => {
   };
 
   return (
-    <ToolboxPanel title="Stroke" icon={StrokeIcon}>
+    <ToolboxPanel title="Stroke" icon={StrokeIcon} variant={variant}>
       <div className="flex flex-col space-y-4">
         <div className="flex justify-between items-center space-x-2">
           <Label htmlFor="strokeWidthInput">Width</Label>

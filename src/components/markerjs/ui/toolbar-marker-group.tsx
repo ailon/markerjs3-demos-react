@@ -13,11 +13,17 @@ import { ChevronDownIcon } from "./icons";
 
 type Props = {
   markers: MarkerTypeGroup;
+  variant?: "ghost" | "outline";
   toggled: boolean;
   onSelectionChange: (markerType: MarkerTypeItem) => void;
 };
 
-const ToolbarMarkerGroup = ({ markers, toggled, onSelectionChange }: Props) => {
+const ToolbarMarkerGroup = ({
+  markers,
+  variant = "ghost",
+  toggled,
+  onSelectionChange,
+}: Props) => {
   const [currentMarkerType, setCurrentMarkerType] = useState(
     markers.markerTypes[0]
   );
@@ -34,7 +40,7 @@ const ToolbarMarkerGroup = ({ markers, toggled, onSelectionChange }: Props) => {
     <div className="inline-flex">
       <Toggle
         pressed={toggled}
-        variant="outline"
+        variant={variant === "ghost" ? "default" : "outline"}
         className="rounded-r-none border-r-0"
         onClick={() => handleMarkerSelection(currentMarkerType)}
       >
@@ -43,7 +49,7 @@ const ToolbarMarkerGroup = ({ markers, toggled, onSelectionChange }: Props) => {
       <Popover open={popoverOpen}>
         <PopoverTrigger asChild>
           <Button
-            variant="outline"
+            variant={variant}
             title={markers.name}
             className="rounded-l-none border-l-0 bg-transparent"
             onClick={() => setPopoverOpen(!popoverOpen)}
