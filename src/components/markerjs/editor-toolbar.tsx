@@ -53,10 +53,9 @@ const EditorToolbar = ({
       </div>
 
       <div className="inline-flex space-x-1 items-center">
-        {markerTypes.map((markerListItem) => (
-          // @todo support single items
-          <>
-            {isMarkerTypeGroup(markerListItem) && (
+        {markerTypes.map(
+          (markerListItem) =>
+            isMarkerTypeGroup(markerListItem) ? (
               <ToolbarMarkerGroup
                 key={markerListItem.name}
                 markers={markerListItem}
@@ -68,9 +67,8 @@ const EditorToolbar = ({
                 }
                 onSelectionChange={onNewMarker}
               />
-            )}
-          </>
-        ))}
+            ) : null // @todo handle single marker items
+        )}
       </div>
 
       <div className="inline-flex space-x-1">
