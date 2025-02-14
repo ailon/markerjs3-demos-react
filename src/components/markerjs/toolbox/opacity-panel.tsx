@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { OpacityIcon } from "../ui/icons";
 import { Slider } from "../../ui/slider";
@@ -8,6 +8,10 @@ import { Label } from "@/components/ui/label";
 
 const OpacityPanel = ({ markerEditor }: PanelProps) => {
   const [opacity, setOpacity] = useState(markerEditor.opacity);
+
+  useEffect(() => {
+    setOpacity(markerEditor.opacity);
+  }, [markerEditor]);
 
   const handleOpacityChange = (newValue: number) => {
     if (newValue < 0 || newValue > 1) {

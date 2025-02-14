@@ -1,4 +1,4 @@
-import { FC, SVGProps, useState } from "react";
+import { FC, SVGProps, useEffect, useState } from "react";
 
 import { StrokeIcon } from "../ui/icons";
 import { Slider } from "../../ui/slider";
@@ -26,8 +26,18 @@ const StrokeStyleVisual: FC<SVGProps<SVGSVGElement>> = (props) => (
 
 const StrokePanel = ({ markerEditor, variant = "ghost" }: PanelProps) => {
   const [strokeWidth, setStrokeWidth] = useState(markerEditor.strokeWidth);
-  const [strokeStyle, setStrokeStyle] = useState(markerEditor.strokeDasharray);
+  const [strokeStyle, setStrokeStyle] = useState(
+    markerEditor.strokeDasharray === "" ? "0" : markerEditor.strokeDasharray
+  );
   const [strokeColor, setStrokeColor] = useState(markerEditor.strokeColor);
+
+  useEffect(() => {
+    setStrokeWidth(markerEditor.strokeWidth);
+    setStrokeStyle(
+      markerEditor.strokeDasharray === "" ? "0" : markerEditor.strokeDasharray
+    );
+    setStrokeColor(markerEditor.strokeColor);
+  }, [markerEditor]);
 
   const handleStrokeWidthChange = (newValue: number) => {
     markerEditor.strokeWidth = newValue;
@@ -77,7 +87,7 @@ const StrokePanel = ({ markerEditor, variant = "ghost" }: PanelProps) => {
           variant="outline"
           onValueChange={handleStrokeStyleChange}
         >
-          <ToggleGroupItem value="" title="Solid">
+          <ToggleGroupItem value="0" title="Solid">
             <StrokeStyleVisual strokeDasharray="0" />
           </ToggleGroupItem>
           <ToggleGroupItem value="4,4" title="Dashed">
