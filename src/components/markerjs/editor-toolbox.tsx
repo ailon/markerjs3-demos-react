@@ -17,10 +17,12 @@ import {
   PolygonMarkerEditor,
   ShapeMarkerEditor,
   ShapeOutlineMarkerEditor,
+  TextMarkerEditor,
 } from "@markerjs/markerjs3";
 import OpacityPanel from "./toolbox/opacity-panel";
 import StrokePanel from "./toolbox/stroke-panel";
 import FillPanel from "./toolbox/fill-panel";
+import FontPanel from "./toolbox/font-panel";
 
 type Props = {
   editorState: EditorState;
@@ -36,39 +38,55 @@ const EditorToolbox = ({
   onAction,
   ...props
 }: Props) => {
-  const canEditOpacity = () => {
-    if (markerEditor === null) {
+  const canEditOpacity = (
+    editor: MarkerBaseEditor | null
+  ): editor is MarkerBaseEditor => {
+    if (editor === null) {
       return false;
     }
 
-    return markerEditor.is(MarkerBaseEditor);
+    return editor.is(MarkerBaseEditor);
   };
 
-  const canEditStroke = () => {
-    if (markerEditor === null) {
+  const canEditStroke = (
+    editor: MarkerBaseEditor | null
+  ): editor is MarkerBaseEditor => {
+    if (editor === null) {
       return false;
     }
 
     return (
-      markerEditor.is(ShapeOutlineMarkerEditor) ||
-      markerEditor.is(LinearMarkerEditor) ||
-      markerEditor.is(CalloutMarkerEditor) ||
-      markerEditor.is(FreehandMarkerEditor) ||
-      markerEditor.is(PolygonMarkerEditor) ||
-      markerEditor.is(CaptionFrameMarkerEditor)
+      editor.is(ShapeOutlineMarkerEditor) ||
+      editor.is(LinearMarkerEditor) ||
+      editor.is(CalloutMarkerEditor) ||
+      editor.is(FreehandMarkerEditor) ||
+      editor.is(PolygonMarkerEditor) ||
+      editor.is(CaptionFrameMarkerEditor)
     );
   };
 
-  const canEditFill = () => {
-    if (markerEditor === null) {
+  const canEditFill = (
+    editor: MarkerBaseEditor | null
+  ): editor is MarkerBaseEditor => {
+    if (editor === null) {
       return false;
     }
 
     return (
-      markerEditor.is(ShapeMarkerEditor) ||
-      markerEditor.is(CaptionFrameMarkerEditor) ||
-      markerEditor.is(CalloutMarkerEditor)
+      editor.is(ShapeMarkerEditor) ||
+      editor.is(CaptionFrameMarkerEditor) ||
+      editor.is(CalloutMarkerEditor)
     );
+  };
+
+  const canEditFont = (
+    editor: MarkerBaseEditor | null
+  ): editor is TextMarkerEditor => {
+    if (editor === null) {
+      return false;
+    }
+
+    return editor.is(TextMarkerEditor);
   };
 
   return (
@@ -96,14 +114,17 @@ const EditorToolbox = ({
       </div>
 
       <div className="inline-flex space-x-1">
-        {canEditStroke() && (
-          <StrokePanel markerEditor={markerEditor!} variant={variant} />
+        {canEditFont(markerEditor) && (
+          <FontPanel markerEditor={markerEditor} variant={variant} />
         )}
-        {canEditFill() && (
-          <FillPanel markerEditor={markerEditor!} variant={variant} />
+        {canEditStroke(markerEditor) && (
+          <StrokePanel markerEditor={markerEditor} variant={variant} />
         )}
-        {canEditOpacity() && (
-          <OpacityPanel markerEditor={markerEditor!} variant={variant} />
+        {canEditFill(markerEditor) && (
+          <FillPanel markerEditor={markerEditor} variant={variant} />
+        )}
+        {canEditOpacity(markerEditor) && (
+          <OpacityPanel markerEditor={markerEditor} variant={variant} />
         )}
       </div>
 
