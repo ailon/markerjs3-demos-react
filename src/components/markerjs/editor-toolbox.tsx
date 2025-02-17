@@ -107,6 +107,7 @@ const EditorToolbox = ({
           icon={RedoIcon}
           title="Redo"
           variant={variant}
+          className="hidden sm:inline-flex"
           action="redo"
           onAction={onAction}
           disabled={!editorState.canRedo}
@@ -140,6 +141,7 @@ const EditorToolbox = ({
           icon={ZoomResetIcon}
           title="Reset zoom"
           variant={variant}
+          className="hidden sm:inline-flex"
           action="zoom-reset"
           onAction={onAction}
         />

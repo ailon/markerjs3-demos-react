@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { LoaderIcon, type IconComponent } from "./icons";
 import { ToolbarAction } from "@/models/toolbar";
 import { Toggle } from "@/components/ui/toggle";
+import { cn } from "@/lib/utils";
 
 type Props = {
   icon: IconComponent;
@@ -12,6 +13,7 @@ type Props = {
   disabled?: boolean;
   loading?: boolean;
   action: ToolbarAction;
+  className?: string;
   onAction: (action: ToolbarAction) => void;
 };
 
@@ -24,6 +26,7 @@ const ToolbarActionButton = ({
   disabled,
   loading = false,
   action,
+  className,
   onAction,
 }: Props) => {
   return (
@@ -31,7 +34,7 @@ const ToolbarActionButton = ({
       {(buttonType === undefined || buttonType === "button") && (
         <Button
           variant={variant}
-          className="bg-transparent"
+          className={cn("bg-transparent", className)}
           size="icon"
           title={title}
           disabled={disabled}
@@ -44,7 +47,7 @@ const ToolbarActionButton = ({
       {buttonType === "toggle" && (
         <Toggle
           variant={variant === "ghost" ? "default" : "outline"}
-          className="bg-transparent"
+          className={cn("bg-transparent", className)}
           title={title}
           pressed={toggled ? true : false}
           disabled={disabled}
