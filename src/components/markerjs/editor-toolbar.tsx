@@ -8,6 +8,7 @@ import { DeleteIcon, DownloadIcon, PointerIcon } from "./ui/icons";
 import ToolbarActionButton from "./ui/toolbar-action-button";
 import { EditorState } from "@/models/editor";
 import ToolbarMarkerGroup from "./ui/toolbar-marker-group";
+import ToolbarMarkersButton from "./ui/toolbar-markers-button";
 
 type Props = {
   markerTypes: MarkerTypeList;
@@ -52,7 +53,7 @@ const EditorToolbar = ({
         />
       </div>
 
-      <div className="inline-flex space-x-1 items-center">
+      <div className="hidden sm:inline-flex space-x-1 items-center">
         {markerTypes.map(
           (markerListItem) =>
             isMarkerTypeGroup(markerListItem) ? (
@@ -69,6 +70,12 @@ const EditorToolbar = ({
               />
             ) : null // @todo handle single marker items
         )}
+      </div>
+      <div className="sm:hidden space-x-1 items-center">
+        <ToolbarMarkersButton
+          markerList={markerTypes}
+          onSelectionChange={onNewMarker}
+        />
       </div>
 
       <div className="inline-flex space-x-1">

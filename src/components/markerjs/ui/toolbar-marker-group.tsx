@@ -47,7 +47,7 @@ const ToolbarMarkerGroup = ({
       >
         <span dangerouslySetInnerHTML={{ __html: currentMarkerType.icon }} />
       </Toggle>
-      <Popover open={popoverOpen}>
+      <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
         <PopoverTrigger asChild>
           <Button
             variant={variant}
