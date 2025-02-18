@@ -45,23 +45,28 @@ const ToolbarMarkersButton = ({
             <AddIcon />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="flex flex-col w-auto p-2">
+        <PopoverContent className="flex flex-col w-auto max-w-60 p-2">
           {markerList.map((markers) => (
-            <div className="flex flex-wrap" key={markers.name}>
-              {isMarkerTypeGroup(markers) &&
-                markers.markerTypes.map((markerType) => (
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    key={markerType.name}
-                    title={markerType.name}
-                    onClick={() => handleMarkerSelection(markerType)}
-                  >
-                    <span
-                      dangerouslySetInnerHTML={{ __html: markerType.icon }}
-                    />
-                  </Button>
-                ))}
+            <div key={markers.name} className="flex flex-col mb-3 last:mb-0">
+              <h2 className="text-sm bg-slate-100 py-1 px-2 rounded-sm mb-1">
+                {markers.name}
+              </h2>
+              <div className="flex flex-wrap">
+                {isMarkerTypeGroup(markers) &&
+                  markers.markerTypes.map((markerType) => (
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      key={markerType.name}
+                      title={markerType.name}
+                      onClick={() => handleMarkerSelection(markerType)}
+                    >
+                      <span
+                        dangerouslySetInnerHTML={{ __html: markerType.icon }}
+                      />
+                    </Button>
+                  ))}
+              </div>
             </div>
           ))}
         </PopoverContent>
