@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { AnnotationState, MarkerView } from "@markerjs/markerjs3";
+import ViewerToolbar from "./viewer-toolbar";
+import { ToolbarAction } from "@/models/toolbar";
 
 type Props = {
   targetImageSrc: string;
@@ -10,6 +12,27 @@ type Props = {
 const Viewer = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
   const viewerContainer = useRef<HTMLDivElement | null>(null);
   const viewer = useRef<MarkerView | null>(null);
+
+  const handleToolbarAction = (action: ToolbarAction) => {
+    if (viewer.current) {
+      switch (action) {
+        case "zoom-in": {
+          viewer.current.zoomLevel += 0.1;
+          break;
+        }
+        case "zoom-out": {
+          if (viewer.current.zoomLevel > 0.2) {
+            viewer.current.zoomLevel -= 0.1;
+          }
+          break;
+        }
+        case "zoom-reset": {
+          viewer.current.zoomLevel = 1;
+          break;
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     if (!viewer.current && viewerContainer.current) {
@@ -37,13 +60,16 @@ const Viewer = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
   }, [annotation, targetImageSrc]);
 
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] w-full h-full">
-      <div></div>
+    <div className="flex relative w-full h-full">
       <div
         ref={viewerContainer}
-        className="flex overflow-hidden bg-slate-50"
+        className="flex overflow-hidden bg-slate-50 w-full h-full"
       ></div>
-      <div></div>
+      <div className="absolute bottom-5 flex items-center justify-center w-full bg-transparent pointer-events-none">
+        <div className="inline-flex pointer-events-auto bg-slate-50/50 rounded-md shadow-2xs">
+          <ViewerToolbar variant={variant} onAction={handleToolbarAction} />
+        </div>
+      </div>
     </div>
   );
 };
