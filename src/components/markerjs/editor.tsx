@@ -255,7 +255,7 @@ const Editor = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
         ...prevState,
         canUndo: editorInstance.isUndoPossible,
         canRedo: editorInstance.isRedoPossible,
-        canDelete: editorInstance.currentMarkerEditor !== undefined, // @todo: handle multiple markers
+        canDelete: editorInstance.selectedMarkerEditors.length > 0,
       }));
     }
   };
