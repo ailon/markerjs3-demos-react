@@ -38,7 +38,8 @@
       "strokeColor": "#ff0000",
       "strokeWidth": 3,
       "strokeDasharray": "",
-      "opacity": 1
+      "opacity": 1,
+      "notes": "Unknown board with a lot of components."
     },
     {
       "imageType": "svg",
@@ -68,7 +69,8 @@
       "strokeColor": "transparent",
       "strokeWidth": 0,
       "strokeDasharray": "",
-      "opacity": 1
+      "opacity": 1,
+      "notes": "Smile for the camera!"
     },
     {
       "arrowType": "end",
@@ -80,7 +82,8 @@
       "strokeColor": "#22c55e",
       "strokeWidth": 3,
       "strokeDasharray": "",
-      "opacity": 1
+      "opacity": 1,
+      "notes": "This must be a camera."
     },
     {
       "arrowType": "end",
@@ -92,7 +95,8 @@
       "strokeColor": "#8b5cf6",
       "strokeWidth": 3,
       "strokeDasharray": "",
-      "opacity": 1
+      "opacity": 1,
+      "notes": "This must be a camera."
     },
     {
       "arrowType": "end",
@@ -104,7 +108,8 @@
       "strokeColor": "#db2777",
       "strokeWidth": 5,
       "strokeDasharray": "",
-      "opacity": 1
+      "opacity": 1,
+      "notes": "This must be a camera."
     },
     {
       "color": "#ec4899",
@@ -140,7 +145,8 @@
       "strokeColor": "transparent",
       "strokeWidth": 0,
       "strokeDasharray": "",
-      "opacity": 1
+      "opacity": 1,
+      "notes": "The battery is missing!"
     },
     {
       "imageType": "svg",
@@ -170,7 +176,8 @@
       "strokeColor": "transparent",
       "strokeWidth": 0,
       "strokeDasharray": "",
-      "opacity": 1
+      "opacity": 1,
+      "notes": "Where's the battery??"
     }
   ]
 }
