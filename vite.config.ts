@@ -20,6 +20,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         frontpage: resolve(__dirname, "frontpage/index.html"),
+        viewer: resolve(__dirname, "viewer/index.html"),
       },
     },
   },
