@@ -13,6 +13,7 @@ This project uses [pnpm](https://pnpm.io/). You can use npm, yarn or other packa
 ## Included demos
 
 - [Front page demo](/frontpage/) - the demo seen on the front page of the [marker.js 3] website. [[Live](https://react-demos.markerjs.com/frontpage/)]
+- [Viewer demo](/viewer/) - annotation viewer component with interactive features. [[Live](https://react-demos.markerjs.com/viewer/)]
 
 ## License
 
