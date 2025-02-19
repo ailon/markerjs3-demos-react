@@ -47,6 +47,9 @@ const StrokePanel = ({ markerEditor, variant = "ghost" }: PanelProps) => {
       markerEditor.strokeDasharray === "" ? "0" : markerEditor.strokeDasharray
     );
     setStrokeColor(markerEditor.strokeColor);
+    setArrowType(
+      markerEditor.is(ArrowMarkerEditor) ? markerEditor.arrowType : "none"
+    );
   }, [markerEditor]);
 
   const handleStrokeWidthChange = (newValue: number) => {
