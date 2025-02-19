@@ -1,12 +1,19 @@
 import { FC, SVGProps, useEffect, useState } from "react";
 
-import { StrokeIcon } from "../ui/icons";
+import {
+  ArrowBothIcon,
+  ArrowEndIcon,
+  ArrowNoneIcon,
+  ArrowStartIcon,
+  StrokeIcon,
+} from "../ui/icons";
 import { Slider } from "../../ui/slider";
 import { Input } from "../../ui/input";
 import ToolboxPanel, { PanelProps } from "../ui/toolbox-panel";
 import { Label } from "@/components/ui/label";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import ColorPicker from "../ui/color-picker";
+import { ArrowMarkerEditor, ArrowType } from "@markerjs/markerjs3";
 
 const StrokeStyleVisual: FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg
@@ -30,6 +37,9 @@ const StrokePanel = ({ markerEditor, variant = "ghost" }: PanelProps) => {
     markerEditor.strokeDasharray === "" ? "0" : markerEditor.strokeDasharray
   );
   const [strokeColor, setStrokeColor] = useState(markerEditor.strokeColor);
+  const [arrowType, setArrowType] = useState(
+    markerEditor.is(ArrowMarkerEditor) ? markerEditor.arrowType : "none"
+  );
 
   useEffect(() => {
     setStrokeWidth(markerEditor.strokeWidth);
@@ -52,6 +62,14 @@ const StrokePanel = ({ markerEditor, variant = "ghost" }: PanelProps) => {
   const handleStrokeColorChange = (newValue: string) => {
     markerEditor.strokeColor = newValue;
     setStrokeColor(newValue);
+  };
+
+  const handleArrowTypeChange = (newValue: ArrowType) => {
+    if (!markerEditor.is(ArrowMarkerEditor)) {
+      return;
+    }
+    markerEditor.arrowType = newValue;
+    setArrowType(newValue);
   };
 
   return (
@@ -98,6 +116,31 @@ const StrokePanel = ({ markerEditor, variant = "ghost" }: PanelProps) => {
           </ToggleGroupItem>
         </ToggleGroup>
       </div>
+
+      {markerEditor.is(ArrowMarkerEditor) && (
+        <div className="flex items-center space-x-4 justify-between">
+          <Label>Arrows</Label>
+          <ToggleGroup
+            type="single"
+            value={arrowType}
+            variant="outline"
+            onValueChange={handleArrowTypeChange}
+          >
+            <ToggleGroupItem value="none" title="None">
+              <ArrowNoneIcon />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="start" title="Start">
+              <ArrowStartIcon />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="end" title="End">
+              <ArrowEndIcon />
+            </ToggleGroupItem>
+            <ToggleGroupItem value="both" title="Both">
+              <ArrowBothIcon />
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+      )}
 
       <div className="flex flex-col space-y-4">
         <Label>Color</Label>

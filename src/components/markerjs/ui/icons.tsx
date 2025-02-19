@@ -17,6 +17,10 @@ import OpacityIcon from "@/assets/icons/circle-half-2.svg?react";
 import StrokeIcon from "@/assets/icons/border-style-2.svg?react";
 import FillIcon from "@/assets/icons/droplet-half-2.svg?react";
 import FontIcon from "@/assets/icons/typography.svg?react";
+import ArrowStartIcon from "@/assets/icons/arrow-narrow-left.svg?react";
+import ArrowEndIcon from "@/assets/icons/arrow-narrow-right.svg?react";
+import ArrowBothIcon from "@/assets/icons/arrows-horizontal.svg?react";
+import ArrowNoneIcon from "@/assets/icons/minus.svg?react";
 
 // general UI icons
 export {
@@ -35,6 +39,10 @@ export {
   StrokeIcon,
   FillIcon,
   FontIcon,
+  ArrowStartIcon,
+  ArrowEndIcon,
+  ArrowBothIcon,
+  ArrowNoneIcon,
 };
 
 import FrameIcon from "@/assets/icons/markers/rectangle.svg?raw";
