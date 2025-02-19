@@ -21,6 +21,7 @@ import ArrowStartIcon from "@/assets/icons/arrow-narrow-left.svg?react";
 import ArrowEndIcon from "@/assets/icons/arrow-narrow-right.svg?react";
 import ArrowBothIcon from "@/assets/icons/arrows-horizontal.svg?react";
 import ArrowNoneIcon from "@/assets/icons/minus.svg?react";
+import NotesIcon from "@/assets/icons/notes.svg?react";
 
 // general UI icons
 export {
@@ -43,6 +44,7 @@ export {
   ArrowEndIcon,
   ArrowBothIcon,
   ArrowNoneIcon,
+  NotesIcon,
 };
 
 import FrameIcon from "@/assets/icons/markers/rectangle.svg?raw";

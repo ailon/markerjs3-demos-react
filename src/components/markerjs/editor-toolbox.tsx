@@ -23,6 +23,7 @@ import OpacityPanel from "./toolbox/opacity-panel";
 import StrokePanel from "./toolbox/stroke-panel";
 import FillPanel from "./toolbox/fill-panel";
 import FontPanel from "./toolbox/font-panel";
+import NotesPanel from "./toolbox/notes-panel";
 
 type Props = {
   editorState: EditorState;
@@ -89,6 +90,16 @@ const EditorToolbox = ({
     return editor.is(TextMarkerEditor);
   };
 
+  const canEditNotes = (
+    editor: MarkerBaseEditor | null
+  ): editor is MarkerBaseEditor => {
+    if (editor === null) {
+      return false;
+    }
+
+    return editor.is(MarkerBaseEditor);
+  };
+
   return (
     <div
       className="flex space-x-1 p-2 justify-between border-t border-slate-100"
@@ -126,6 +137,9 @@ const EditorToolbox = ({
         )}
         {canEditOpacity(markerEditor) && (
           <OpacityPanel markerEditor={markerEditor} variant={variant} />
+        )}
+        {canEditNotes(markerEditor) && (
+          <NotesPanel markerEditor={markerEditor} variant={variant} />
         )}
       </div>
 
