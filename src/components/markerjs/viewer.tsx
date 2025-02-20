@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 type Props = {
   targetImageSrc: string;
   variant?: "ghost" | "outline";
-  annotation?: AnnotationState;
+  annotation: AnnotationState | null;
 };
 
 const Viewer = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
@@ -72,7 +72,7 @@ const Viewer = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
 
       viewerContainer.current.appendChild(viewer.current);
     }
-    if (annotation !== undefined) {
+    if (annotation) {
       viewer.current?.show(annotation);
     }
   }, [annotation, targetImageSrc, hoveredMarker]);

@@ -9,12 +9,14 @@ import ToolbarActionButton from "./ui/toolbar-action-button";
 import { EditorState } from "@/models/editor";
 import ToolbarMarkerGroup from "./ui/toolbar-marker-group";
 import ToolbarMarkersButton from "./ui/toolbar-markers-button";
+import { SaveIcon } from "lucide-react";
 
 type Props = {
   markerTypes: MarkerTypeList;
   currentMarkerType: MarkerTypeItem | null;
   editorState: EditorState;
   variant?: "ghost" | "outline";
+  saveVisible?: boolean;
   onAction: (action: ToolbarAction) => void;
   onNewMarker: (markerType: MarkerTypeItem) => void;
 } & React.ComponentProps<"div">;
@@ -24,6 +26,7 @@ const EditorToolbar = ({
   currentMarkerType,
   editorState,
   variant = "ghost",
+  saveVisible = false,
   onAction,
   onNewMarker,
   ...props
@@ -79,6 +82,15 @@ const EditorToolbar = ({
       </div>
 
       <div className="inline-flex space-x-1">
+        {saveVisible && (
+          <ToolbarActionButton
+            icon={SaveIcon}
+            title="Save"
+            variant={variant}
+            action="save"
+            onAction={onAction}
+          />
+        )}
         <ToolbarActionButton
           icon={DownloadIcon}
           title="Download"

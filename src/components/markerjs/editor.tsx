@@ -139,10 +139,16 @@ const markerTypes: MarkerTypeList = [
 type Props = {
   targetImageSrc: string;
   variant?: "ghost" | "outline";
-  annotation?: AnnotationState;
+  annotation: AnnotationState | null;
+  onSave?: (annotation: AnnotationState) => void;
 };
 
-const Editor = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
+const Editor = ({
+  targetImageSrc,
+  variant = "ghost",
+  annotation,
+  onSave,
+}: Props) => {
   const editorContainer = useRef<HTMLDivElement | null>(null);
   const editor = useRef<MarkerArea | null>(null);
 
@@ -199,6 +205,12 @@ const Editor = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
         }
         case "download": {
           downloadMarkedImage();
+          break;
+        }
+        case "save": {
+          if (onSave) {
+            onSave(editor.current.getState());
+          }
           break;
         }
       }
@@ -301,7 +313,7 @@ const Editor = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
 
       editorContainer.current.appendChild(editor.current);
     }
-    if (annotation !== undefined) {
+    if (annotation) {
       editor.current?.restoreState(annotation);
     }
   }, [annotation, targetImageSrc]);
@@ -314,6 +326,7 @@ const Editor = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
           markerTypes={markerTypes}
           currentMarkerType={currentMarkerType}
           editorState={editorState}
+          saveVisible={!!onSave}
           onAction={handleToolbarAction}
           onNewMarker={handleNewMarker}
         />

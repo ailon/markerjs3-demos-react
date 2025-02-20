@@ -8,6 +8,7 @@ import RedoIcon from "@/assets/icons/arrow-forward-up.svg?react";
 import ZoomInIcon from "@/assets/icons/plus.svg?react";
 import ZoomOutIcon from "@/assets/icons/minus.svg?react";
 import ZoomResetIcon from "@/assets/icons/relation-one-to-one.svg?react";
+import SaveIcon from "@/assets/icons/device-floppy.svg?react";
 
 import ChevronDownIcon from "@/assets/icons/chevron-down.svg?react";
 import AddIcon from "@/assets/icons/square-plus.svg?react";
@@ -23,6 +24,8 @@ import ArrowBothIcon from "@/assets/icons/arrows-horizontal.svg?react";
 import ArrowNoneIcon from "@/assets/icons/minus.svg?react";
 import NotesIcon from "@/assets/icons/notes.svg?react";
 
+import GitHubIcon from "@/assets/icons/brand-github.svg?react";
+
 // general UI icons
 export {
   PointerIcon,
@@ -33,6 +36,7 @@ export {
   ZoomInIcon,
   ZoomOutIcon,
   ZoomResetIcon,
+  SaveIcon,
   ChevronDownIcon,
   AddIcon,
   LoaderIcon,
@@ -45,6 +49,7 @@ export {
   ArrowBothIcon,
   ArrowNoneIcon,
   NotesIcon,
+  GitHubIcon,
 };
 
 import FrameIcon from "@/assets/icons/markers/rectangle.svg?raw";
