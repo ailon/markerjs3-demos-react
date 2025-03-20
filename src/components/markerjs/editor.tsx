@@ -5,6 +5,7 @@ import {
   CalloutMarker,
   CaptionFrameMarker,
   CoverMarker,
+  CurveMarker,
   CustomImageMarker,
   EllipseFrameMarker,
   EllipseMarker,
@@ -39,6 +40,7 @@ import {
   HighlightIcon,
   LineIcon,
   MeasurementIcon,
+  CurveIcon,
   PolygonIcon,
   TextIcon,
 } from "./ui/icons";
@@ -92,6 +94,11 @@ const markerTypes: MarkerTypeList = [
         icon: MeasurementIcon,
         name: "Measure",
         markerType: MeasurementMarker,
+      },
+      {
+        icon: CurveIcon,
+        name: "Curve",
+        markerType: CurveMarker,
       },
     ],
   },

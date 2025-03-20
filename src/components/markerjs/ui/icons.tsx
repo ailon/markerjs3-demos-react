@@ -60,6 +60,7 @@ import HighlightIcon from "@/assets/icons/markers/highlight.svg?raw";
 import ArrowIcon from "@/assets/icons/markers/arrow-narrow-right.svg?raw";
 import LineIcon from "@/assets/icons/markers/line.svg?raw";
 import MeasurementIcon from "@/assets/icons/markers/ruler-measure.svg?raw";
+import CurveIcon from "@/assets/icons/markers/vector-spline.svg?raw";
 import TextIcon from "@/assets/icons/markers/text-size.svg?raw";
 import CalloutIcon from "@/assets/icons/markers/bubble-text.svg?raw";
 import CaptionFrameIcon from "@/assets/icons/markers/text-resize.svg?raw";
@@ -76,6 +77,7 @@ export {
   ArrowIcon,
   LineIcon,
   MeasurementIcon,
+  CurveIcon,
   TextIcon,
   CalloutIcon,
   CaptionFrameIcon,
