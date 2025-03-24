@@ -19,6 +19,7 @@ import {
   PolygonMarker,
   Renderer,
   TextMarker,
+  HighlighterMarker,
 } from "@markerjs/markerjs3";
 import EditorToolbar from "./editor-toolbar";
 import EditorToolbox from "./editor-toolbox";
@@ -62,7 +63,7 @@ const markerTypes: MarkerTypeList = [
       },
       {
         icon: HighlightIcon,
-        name: "Highlighter",
+        name: "Highlight",
         markerType: HighlightMarker,
       },
       {
@@ -129,6 +130,11 @@ const markerTypes: MarkerTypeList = [
         icon: FreehandIcon,
         name: "Freehand",
         markerType: FreehandMarker,
+      },
+      {
+        icon: HighlightIcon,
+        name: "Highlighter",
+        markerType: HighlighterMarker,
       },
       {
         icon: PolygonIcon,
