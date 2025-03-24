@@ -93,8 +93,8 @@ const StrokePanel = ({ markerEditor, variant = "ghost" }: PanelProps) => {
         </div>
         <Slider
           value={[strokeWidth]}
-          min={1}
-          max={10}
+          min={0}
+          max={50}
           step={1}
           onValueChange={(ev) => handleStrokeWidthChange(ev[0])}
         />
