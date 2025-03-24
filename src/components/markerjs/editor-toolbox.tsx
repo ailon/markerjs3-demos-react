@@ -76,7 +76,8 @@ const EditorToolbox = ({
     return (
       editor.is(ShapeMarkerEditor) ||
       editor.is(CaptionFrameMarkerEditor) ||
-      editor.is(CalloutMarkerEditor)
+      editor.is(CalloutMarkerEditor) ||
+      editor.is(PolygonMarkerEditor)
     );
   };
 
