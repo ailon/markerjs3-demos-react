@@ -2,6 +2,7 @@
   "version": 3,
   "width": 1140,
   "height": 854.4066620402498,
+  "defaultFilter": "drop-shadow(2px 2px 2px rgba(0,0,0,0.5))",
   "markers": [
     {
       "fillColor": "#ff0000",
