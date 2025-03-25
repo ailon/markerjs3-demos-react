@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { AnnotationState, MarkerBase, MarkerView } from "@markerjs/markerjs3";
+import {
+  AnnotationState,
+  MarkerBase,
+  MarkerView,
+  SvgHelper,
+} from "@markerjs/markerjs3";
 import ViewerToolbar from "./viewer-toolbar";
 import { ToolbarAction } from "@/models/toolbar";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
@@ -60,12 +65,13 @@ const Viewer = ({ targetImageSrc, variant = "ghost", annotation }: Props) => {
       });
       viewer.current.addEventListener("markerover", (ev) => {
         setHoveredMarker(ev.detail.marker);
-        ev.detail.marker.container.style.filter =
-          "drop-shadow(0 0 15px rgba(255, 255, 255, 1)) brightness(1.2)";
+        SvgHelper.setAttributes(ev.detail.marker.container, [
+          ["filter", "url(#outline)"],
+        ]);
       });
       viewer.current.addEventListener("markerpointerleave", () => {
         if (hoveredMarker) {
-          hoveredMarker.container.style.filter = "";
+          SvgHelper.setAttributes(hoveredMarker.container, [["filter", ""]]);
         }
         setHoveredMarker(null);
       });

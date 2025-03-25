@@ -2,6 +2,7 @@
   "version": 3,
   "width": 1140,
   "height": 854.4066620402498,
+  "defaultFilter": "url(#glow)",
   "markers": [
     {
       "fillColor": "#ff0000",
