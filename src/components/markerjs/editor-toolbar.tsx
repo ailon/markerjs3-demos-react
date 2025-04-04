@@ -10,6 +10,7 @@ import { EditorState } from "@/models/editor";
 import ToolbarMarkerGroup from "./ui/toolbar-marker-group";
 import ToolbarMarkersButton from "./ui/toolbar-markers-button";
 import { SaveIcon } from "lucide-react";
+import { emojis } from "./ui/emojis";
 
 type Props = {
   markerTypes: MarkerTypeList;
@@ -20,6 +21,8 @@ type Props = {
   onAction: (action: ToolbarAction) => void;
   onNewMarker: (markerType: MarkerTypeItem) => void;
 } & React.ComponentProps<"div">;
+
+const allEmojisString = emojis.map((emoji) => emoji.icon).join("");
 
 const EditorToolbar = ({
   markerTypes,
@@ -36,6 +39,12 @@ const EditorToolbar = ({
       className="flex space-x-1 p-2 justify-between border-b border-slate-100"
       {...props}
     >
+      {/* Workaround for attributes like fill="url(#abc)" not working in SVGs when fist occurrence is hidden */}
+      <div
+        className="absolute w-0 h-0 overflow-hidden"
+        dangerouslySetInnerHTML={{ __html: allEmojisString }}
+      ></div>
+
       <div className="inline-flex space-x-1">
         <ToolbarActionButton
           icon={PointerIcon}
