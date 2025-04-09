@@ -326,7 +326,10 @@ const Editor = ({
 
       editorContainer.current.appendChild(editor.current);
     }
-    if (annotation) {
+    if (
+      annotation &&
+      JSON.stringify(annotation) !== JSON.stringify(editor.current?.getState()) // make sure it actually changed
+    ) {
       editor.current?.restoreState(annotation);
     }
   }, [annotation, targetImageSrc]);
