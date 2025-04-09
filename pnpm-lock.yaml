@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@markerjs/markerjs3':
-        specifier: 3.5.2
-        version: 3.5.2
+        specifier: 3.5.4
+        version: 3.5.4
       '@radix-ui/react-label':
         specifier: ^2.1.2
         version: 2.1.2(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -429,8 +429,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@markerjs/markerjs3@3.5.2':
-    resolution: {integrity: sha512-8m4SYd/P0tnqYnwg8ahEmnENL+BYa78r3ympjhedXoiVt1dAyaWeq1v9ewkFhCXjwG8uvzOocSmg6uiBIz2JeQ==}
+  '@markerjs/markerjs3@3.5.4':
+    resolution: {integrity: sha512-7YpKFa9m6oqgpEWoPzQ2Nbc+sQNEttO187nhvH2wrEKTpy6LWgK0f2VR8dcpKsS+1ntk36w/hqQHfAe55vU3Hg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2168,7 +2168,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@markerjs/markerjs3@3.5.2': {}
+  '@markerjs/markerjs3@3.5.4': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
