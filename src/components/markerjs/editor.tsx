@@ -334,6 +334,52 @@ const Editor = ({
     }
   }, [annotation, targetImageSrc]);
 
+  // Handle keyboard shortcuts for delete
+  useEffect(() => {
+    const container = editorContainer.current;
+    if (!container) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Delete" || event.key === "Backspace") {
+        // Check if an input/textarea element is focused (text editing in progress)
+        // First check document-level active element
+        const activeElement = document.activeElement;
+        let isTextInputFocused =
+          activeElement instanceof HTMLInputElement ||
+          activeElement instanceof HTMLTextAreaElement ||
+          activeElement?.getAttribute("contenteditable") === "true";
+
+        // Also check inside MarkerArea's shadow DOM for focused text inputs
+        if (!isTextInputFocused && editor.current) {
+          const shadowRoot = (editor.current as unknown as Element).shadowRoot;
+          if (shadowRoot) {
+            const activeInShadow = shadowRoot.activeElement;
+            isTextInputFocused =
+              activeInShadow instanceof HTMLInputElement ||
+              activeInShadow instanceof HTMLTextAreaElement ||
+              activeInShadow?.getAttribute("contenteditable") === "true";
+          }
+        }
+
+        if (
+          !isTextInputFocused &&
+          editor.current &&
+          editor.current.selectedMarkerEditors.length > 0
+        ) {
+          event.preventDefault();
+          editor.current.deleteSelectedMarkers();
+          updateCalculatedEditorState();
+        }
+      }
+    };
+
+    container.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      container.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="grid grid-rows-[auto_1fr_auto] w-full h-full">
       <div>
@@ -349,7 +395,8 @@ const Editor = ({
       </div>
       <div
         ref={editorContainer}
-        className="flex overflow-hidden bg-slate-50"
+        tabIndex={0}
+        className="flex overflow-hidden bg-slate-50 focus:outline-none"
       ></div>
       <div>
         <EditorToolbox
